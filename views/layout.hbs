@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <title>{{title}}</title>
   </head>
+  <header>
+    <div class="nav-container">
+      <nav>
+        <ul>
+          <li><a href="/" class="logo">{{title}}</a></li>
+          <li><i class="fas fa-search"></i><a href="#">   Buscar</a></li>
+          <li><i class="fas fa-user-circle"></i><a href="#">  Mi Perfil</a></li>
+          <li><i class="fas fa-info-circle"></i><a href="#">  Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <body>
-    <nav id="nav" >
-      {{!-- <img id="logo" src="" alt="Tamborcitos"> --}}
-      <ul>
-        <li><h2>{{title}}</h2><br></li>
-        <li><i class="fas fa-search"></i><h2>Buscar</h2></li>
-        <li><i class="fas fa-user-circle"></i><h2>Mi Perfil</h2></li>
-        <li><i class="fas fa-info-circle"></i><h2>Acerca de</h2></li>
-      </ul>
-    </nav>
 
-    {{{body}}}
+  {{{body}}}
 
-    <script src='/javascripts/script.js'></script>
+  <script src='/javascripts/script.js'></script>
   </body>
 </html>
