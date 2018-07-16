@@ -9,11 +9,15 @@ const userSchema = new Schema({
     },
     photoURL: {
         type: String,
-        default: 'http://lllkd.kcol'
+        default: '/assets/avatar2.png'
     },
     age: Number,
     active: Boolean,
-    // favBooks: [],
+    role: {
+        type: String,
+        enum: ['GUEST', 'USER', 'ADMIN'],
+        default: 'GUEST'
+    }
 });
 
 userSchema.plugin(PLM, {usernameField:'email'}); 

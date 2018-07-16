@@ -1,22 +1,19 @@
 <div class="container">
-    <div class="category">
-        <h3>LIBROS</h3>
-        <a href="/books">Ver más</a>
-        <p>Aquí se deben ver los libros en filas</p>
-        <a href="/"><img class="card" src="https://books.google.com.mx/books/content?id=hTOpvvxQW8oC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70oHW6yxbZwHY8xIZcC2c7z5K9A3-l0rRIecE99EMQS7o3Li6jChGBt4MyHXbjIp33eUoV2wDQYKjsU06T9civeS5rPqSbFGAGAhlVwYWDnJTv66xNi0DcwTeTx8p9t-DpGUw7V" alt="Card image cap"></a>
+    <div class="welcome-header">
+        <h1>Encuentra donde ir!</h1>
     </div>
+    <section class="section-events">
+        <h3>PRÓXIMOS EVENTOS</h3>
+        <a href="/events">Ver más</a>
+        <p>SÁBADO 21 DE JULIO</p>
+        <p>Aquí se deben ver los eventos en filas</p>
 
-    <div class="category">
-        <h3>LUGARES</h3>
+    </section>
+    <section class="section-places">
+        <h3>LUGARES DE INTERÉS</h3>
         <a href="/places">Ver más</a>
         <p>Aquí se deben ver los lugares en filas</p>
-    </div>
-
-    <div class="category">
-        <h3>EVENTOS</h3>
-        <a href="/events">Ver más</a>
-        <p>Aquí se deben ver los eventos en filas</p>
-    </div>
+    </section>
 </div>
 
 <script>
@@ -48,20 +45,3 @@
         }        
     }
 </script>
-
-{{!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0iBJ86eZUGkhbuWhS7b4_B3-8cRYQgTQ&libraries=places"></script>
-<script>
-    let address = document.getElementById('address');
-    let lat = document.getElementById('lat');
-    let lng = document.getElementById('lng');
-
-    function autoComplete(input, inputLat, inputLng){
-        const dropdown = new google.maps.places.Autocomplete(input);
-        dropdown.addListener('place_changed', ()=>{
-            let place = dropdown.getPlace();
-            console.log(place)
-        })
-    }
-
-    autoComplete(address, lat, lng);
-</script> --}}
