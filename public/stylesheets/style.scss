@@ -103,8 +103,29 @@ section {
   padding: 50px;
 }
 
-.place-card {
-  background-color: #FFF;
-  border-radius: 10px;
-  width: 10rem;
+.section-places {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.showing-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  grid-gap: 3em;
+}
+
+.card {
+  background-color: rgb(250, 249, 239);
+  margin: 0;
+  padding: 10px;
+  height: max-content;
+  border: 0.5px solid rgb(191, 191, 191);
+  border-radius: 0px;
+  // width: 20rem;
+}
+
+.card-header {
+  background: rgb(250, 249, 239);
+  border-bottom: 0.5px solid rgb(191, 191, 191);
 }
