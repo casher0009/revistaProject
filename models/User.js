@@ -18,3 +18,30 @@ const userSchema = new Schema({
 
 userSchema.plugin(PLM, {usernameField:'email'}); 
 module.exports = mongoose.model('User', userSchema);
+
+// places: [
+//     {
+//       type: Schema.Types.ObjectId,
+//       ref: "Place"
+//     }
+//   ],
+//   books: [
+//     {
+//       type: Schema.Types.ObjectId,
+//       ref: "Place"
+//     }
+//   ],
+//   events: [
+//     {
+//       type: Schema.Types.ObjectId,
+//       ref: "Event"
+//     }
+//   ]
+// },
+// {
+//   timestamps: {
+//     createdAt: "created_at",
+//     updatedAt: "updated_at"
+//   }
+// }
+// );
