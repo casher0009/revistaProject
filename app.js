@@ -33,7 +33,7 @@ app.use(session({
   }),
   secret: 'bliss',
   saveUninitialized: true,
-  resave: false,
+  resave: true,
   // cookie: {
   //     path: "/",
   // }

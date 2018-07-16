@@ -4,34 +4,37 @@ const Place = require("../models/Place");
 const passport = require("passport");
 const multer = require("multer");
 const upload = multer({ dest: "./public/assets" });
+const User = require("../models/User");
 
-function isLoggedIn(req,res,next){
-  if(req.isAuthenticated()) return next();
-  return res.redirect('/login?next=/profile')
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  return res.redirect("/login?next=/profile");
 }
 
 //NEW
-router.get("/newPlace", (req, res, next) => {
+router.get("/newPlace", isLoggedIn, (req, res, next) => {
   res.render("newPlace");
 });
 
-router.post("/newPlace", isLoggedIn, upload.single("photo"), (req, res, next) => {
+router.post("/newPlace", upload.single("photo"), (req, res, next) => {
   if (req.file) {
     req.body.photoURL = "/assets/" + req.file.filename;
     req.body.aportedBy = req.user._id;
     Place.create(req.body)
-      .then(Place => {
-        res.redirect("/listPlace");
-      })
+      .then(place =>
+        User.findByIdAndUpdate(req.user._id, { $push: { places: place._id } })
+      )
+      .then(res.redirect("/listPlace"))
       .catch(e => {
         console.log(e);
       });
   } else {
     req.body.aportedBy = req.user._id;
     Place.create(req.body)
-      .then(Place => {
-        res.redirect("/listPlace");
-      })
+      .then(place =>
+        User.findByIdAndUpdate(req.user._id, { $push: { places: place._id } })
+      )
+      .then(res.redirect("/listPlace"))
       .catch(e => {
         console.log(e);
       });

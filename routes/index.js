@@ -1,6 +1,18 @@
 const express = require('express');
 const router  = express.Router();
 
+//Funcion esta logeado?
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  return res.redirect("/login?next=/activation");
+}
+function isAuth(req, res, next) {
+  if (req.isAuthenticated()) return res.redirect("/profile");
+  return next();
+}
+
+
+
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -11,8 +23,8 @@ router.get('/search', (req, res, next) => {
   res.render('search');
 });
 
-/* GET profile page */
-router.get('/profile', (req, res, next) => {
+/* GET profile page */ 
+router.get('/profile',isLoggedIn, (req, res, next) => {
   res.render('profile');
 });
 
