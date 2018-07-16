@@ -12,7 +12,7 @@ body {
   margin: 0 auto; }
 
 header {
-  background: #55d6aa; }
+  background: #00b386; }
 
 header::after {
   content: '';
@@ -59,11 +59,17 @@ nav a:hover::before {
   width: 100%; }
 
 .category {
+  padding: 20px;
   color: wheat; }
 
 .category a {
-  color: #55d6aa;
+  color: #00b386;
   text-decoration: none;
   text-transform: uppercase; }
+
+.card {
+  background-color: #FFF;
+  border-radius: 10px;
+  width: 10rem; }
 
 /*# sourceMappingURL=style.css.map */
