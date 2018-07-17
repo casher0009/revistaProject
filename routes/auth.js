@@ -18,7 +18,7 @@ router.post('/signup', (req,res,next)=>{
         //activation link
         //sendActivationLink(user);
         //loguearlo automaticamente
-        res.redirect('/login')
+        res.redirect('/')
     })
     .catch(e=>{
         req.body.err = errDict[e.name];

@@ -1,16 +1,12 @@
-<h1>REGISTRO</h1>
-<p style="color:red">
-    {{#if err}}{{err}}{{/if}}
-</p>
-<form validated action="/signup" method="post">
-    <p>
-        <input value="{{email}}" required placeholder="Ingresa tu email :)" name="email" type="email">
-    </p>
-        <p>
-        <input value="{{password}}" required placeholder="Contraseña :)" name="password" type="password">
-    </p>
-        <p>
-        <input value="{{password2}}" required placeholder="Repite tu contraseña :)" name="password2" type="password">
-    </p>
-    <input type="submit">
-</form>
+<div class="login-page">
+  <div class="login-form">
+    <h1>Regístrate</h1>
+    <form class="form" validated action="/signup" method="post">
+        <input value="{{email}}" placeholder="Cuál es tu email? :)" name="email" type="email" required/>
+        <input value="{{password}}" placeholder="Escribe una contraseña" name="password" type="password" required/>
+        <input value="{{password2}}" required placeholder="Repite la contraseña" name="password2" type="password">
+        <button>ENTRAR</button>
+      <p class="message" style="color:red">{{#if err}}{{err}}{{/if}}</p>
+    </form>
+  </div>
+</div>
