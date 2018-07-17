@@ -13,7 +13,7 @@ function isLoggedIn(req, res, next) {
 
 //NEW
 router.get("/newPlace", isLoggedIn, (req, res, next) => {
-  res.render("newPlace");
+  res.render("places/newPlace");
 });
 
 router.post("/newPlace", upload.single("photo"), (req, res, next) => {
@@ -24,7 +24,7 @@ router.post("/newPlace", upload.single("photo"), (req, res, next) => {
       .then(place =>
         User.findByIdAndUpdate(req.user._id, { $push: { places: place._id } })
       )
-      .then(res.redirect("/listPlace"))
+      .then(res.redirect("/places"))
       .catch(e => {
         console.log(e);
       });
@@ -34,27 +34,28 @@ router.post("/newPlace", upload.single("photo"), (req, res, next) => {
       .then(place =>
         User.findByIdAndUpdate(req.user._id, { $push: { places: place._id } })
       )
-      .then(res.redirect("/listPlace"))
+      .then(res.redirect("/places"))
       .catch(e => {
         console.log(e);
       });
   }
 });
 
-router.get("/listPLace", (req, res) => {
+router.get("/places", (req, res) => {
   Place.find()
     .then(place => {
-      res.render("listPlace", { place });
+      res.render("places/places", { place });
     })
     .catch(e => {
       console.log(e);
     });
 });
 
-router.get("/listPlace/:id", (req, res) => {
+router.get("/places/:id", (req, res) => { 
   Place.findById(req.params.id)
+  .populate("aportedBy")
     .then(place => {
-      res.render("placeDetail", place);
+      res.render("places/placeDetail", place);
     })
     .catch(e => {
       console.log(e);

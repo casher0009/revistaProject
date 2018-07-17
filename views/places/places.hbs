@@ -1,0 +1,10 @@
+<h1>Lugares</h1>
+<section>
+<div>
+    {{#each place}}
+        <a href="/places/{{this._id}}">
+            <p>{{this.placeName}}</p>
+        </a>
+    {{/each}}
+</div>
+</section>

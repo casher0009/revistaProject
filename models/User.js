@@ -1,24 +1,3 @@
-// const mongoose = require ('mongoose');
-// const Schema = mongoose.Schema;
-// const PLM = require('passport-local-mongoose');
-
-// const userSchema = new Schema({ 
-//     email: { 
-//         type: String,
-//         required: true,
-//     },
-//     photoURL: {
-//         type: String,
-//         default: 'http://lllkd.kcol'
-//     },
-//     age: Number,
-//     active: Boolean,
-//     // favBooks: [],
-// });
-
-// userSchema.plugin(PLM, {usernameField:'email'}); 
-// module.exports = mongoose.model('User', userSchema);
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
@@ -45,7 +24,8 @@ const userSchema = new Schema(
     places: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Place"
+        ref: "Place",
+        childPath: "aportedBy"
       }
     ],
     books: [
@@ -57,7 +37,8 @@ const userSchema = new Schema(
     events: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Event"
+        ref: "Event",
+        childPath: "aportedBy"
       }
     ]
   },

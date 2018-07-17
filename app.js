@@ -1,3 +1,4 @@
+process.setMaxListeners(0);
 require('dotenv').config();
 
 const bodyParser   = require('body-parser');
@@ -67,6 +68,10 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
 app.locals.title = 'Un título chingón';
+//Eventos
+const event = require('./routes/event');
+app.use('/', event);
+
 //LUGARES
 const place = require('./routes/place');
 app.use('/', place);

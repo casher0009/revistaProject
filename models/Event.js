@@ -1,11 +1,12 @@
 const Schema = require("mongoose").Schema;
 
-const placeSchema = new Schema(
+const eventSchema = new Schema(
   {
-    placeName: {
+    eventName: {
       type: String,
       required: true
     },
+    organizedBy: String,
     location: {
       type: {
         type: String,
@@ -20,7 +21,7 @@ const placeSchema = new Schema(
     photoURL: {
       type: String,
       default:
-        "http://backgroundcheckall.com/wp-content/uploads/2017/12/background-kids-color.jpg"
+        "https://s3.amazonaws.com/joinnus.com-tester-bucket/user/14106/act5890cc1837041.jpg"
     },
     aportedBy: {
       type: Schema.Types.ObjectId,
@@ -41,14 +42,19 @@ const placeSchema = new Schema(
         "mas de 11 años"
       ],
       default: "todas las edades"
+    },
+    date:{
+      type: Schema.Types.Mixed
     }
   },
   {
     timestamps: {
-      createdAt: "created_at",
+      createdAt: "created_at"
+
+      ,
       updatedAt: "updated_at"
     }
   }
 );
 
-module.exports = require("mongoose").model("Place", placeSchema);
+module.exports = require("mongoose").model("Event", eventSchema);

@@ -1,0 +1,60 @@
+<h2>Detalle del Evento</h2>
+
+<img src={{photoURL}} alt="Foto del evento Aqui" height="150px" width="300px" >
+<h1>{{eventName}}</h1>
+<h2 id="fechaEvento" >{{date}}</h2>
+<p>{{cost}}</p>
+<p>{{recomendedAge}}</p>
+<p>{{location.address}}</p>
+<p>
+    <sub>Aportado por nuestro usuario:
+        <i>{{aportedBy.username}}</i>
+    </sub>
+</p>
+<p>
+    <i>
+        <sub>el dia :
+            <span id="formatedHour">{{created_at}}</span>
+        </sub>
+    </i>
+</p>
+<div id="mapita" heigth="100%" width="50vh"></div>
+
+{{!-- cambiar la hora --}}
+<script>
+    var oldHour = document.getElementById("formatedHour")
+    var options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", hour12: "false" };
+    var myDate = new Date(oldHour.innerHTML);
+    var newDate = myDate.toLocaleString("es-ES", options)
+    oldHour.innerHTML = newDate
+
+    var eventHour = document.getElementById("fechaEvento")
+    var myEventDate = new Date(eventHour.innerHTML);
+    var newEventDate = myEventDate.toLocaleString("es-ES", options)
+    eventHour.innerHTML = newEventDate
+
+
+</script> {{!-- ingresar maps y marker --}}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzYCmApB3ysZNFYoP4TbhfHdNIhOroJtc&libraries=places"></script>
+<script>
+    let center = {
+        lat: {{ location.coordinates.[1]}},
+        lng: {{ location.coordinates.[0]}}
+    };
+    let title = '{{eventName}}'
+
+    const map = new google.maps.Map(
+        document.getElementById('mapita'),
+        {
+            center,
+            zoom: 15
+        }
+    )
+    const marker = new google.maps.Marker({
+        map,
+        position: center,
+        title,
+        animation: google.maps.Animation.BOUNCE
+    })
+
+</script>
