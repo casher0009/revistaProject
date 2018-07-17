@@ -5,7 +5,7 @@
     <input required placeholder="*Nombre del Lugar:" type="text" name="placeName">
   </p>
  <p> <input placeholder="Breve Descripcion del Lugar:" type="text" name="description"></p>
- <p> <input type="text" name="location[address]" id="address"></p>
+ <p> <input required type="text" name="location[address]" id="address"></p>
   <p><select name="recomendedAge" required>
     <option value="">*Edad recomendada:</option>
     <option>todas las edades</option>
@@ -34,13 +34,13 @@
 
   </p>
   <p>
-  <input type="submit" value="guardalo ">
+  <input type="submit" value="Guardar lugar ">
   <br>
   * Informacion requerida
 </p>
 </form>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANLU6Oh8X1ClsmohFD__Dqux_em83iYhU&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzYCmApB3ysZNFYoP4TbhfHdNIhOroJtc&libraries=places"></script>
 
 <script>
   let address = document.getElementById('address')

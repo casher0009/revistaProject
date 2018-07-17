@@ -1,0 +1,20 @@
+<h1>Eventos</h1>
+<section>
+<div>
+    {{#each event}}
+        <a href="/events/{{this._id}}">
+            <p>Nombre: {{this.eventName}},<br>
+            Fecha: <i><span id="formatedHour">{{this.date}}</span></i></p>
+        </a>
+    {{/each}}
+</div>
+</section>
+
+{{!-- cambiar la hora --}}
+<script>
+    var oldHour = document.getElementById("formatedHour")
+    var options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", hour12: "false" };
+    var myDate = new Date(oldHour.innerHTML);
+    var newDate = myDate.toLocaleString("es-ES", options)
+    oldHour.innerHTML = newDate
+</script>
