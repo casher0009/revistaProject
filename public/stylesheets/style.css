@@ -173,4 +173,45 @@ section {
 .login-form .register-form {
   display: none; }
 
+.title-pen {
+  color: #444;
+  text-align: center; }
+
+.user-profile {
+  margin: auto;
+  width: 55em;
+  height: 40em;
+  background: #fff;
+  border-radius: .3em; }
+
+.user-profile img {
+  padding: 3.7em;
+  margin-left: .3em;
+  margin-top: .3em;
+  height: 6.23em;
+  width: 6.23em;
+  border-radius: 18em; }
+
+.user-profile .username {
+  margin: auto;
+  margin-top: -6.40em;
+  margin-left: 9.80em;
+  margin-bottom: 15px;
+  color: #444;
+  font-size: 1.53em;
+  font-weight: bold; }
+
+.user-profile .mail {
+  margin: auto;
+  display: inline-block;
+  margin-left: 17.20em;
+  font-size: .87em; }
+
+.userplaces {
+  margin: auto;
+  margin-left: 9.80em;
+  color: #444;
+  font-size: 1.53em;
+  font-weight: bold; }
+
 /*# sourceMappingURL=style.css.map */

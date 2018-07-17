@@ -16,6 +16,11 @@ router.get('/profile', (req, res, next) => {
   res.render('profile');
 });
 
+/* GET contact page */
+router.get('/contact', (req, res, next) => {
+  res.render('contact');
+});
+
 /* GET books page */
 router.get('/books', (req, res, next) => {
   res.render('books');
