@@ -1,5 +1,7 @@
 const express = require('express');
 const router  = express.Router();
+const Event = require('../models/Event');
+const Place = require('../models/Place');
 
 //Funcion esta logeado?
 function isLoggedIn(req, res, next) {
@@ -11,11 +13,16 @@ function isAuth(req, res, next) {
   return next();
 }
 
-
-
 /* GET home page */
 router.get('/', (req, res, next) => {
-  res.render('index');
+    Promise.all([Event.find().sort({date: -1}).limit(3), Place.find().limit(3).populate("aportedBy")])
+    .then(results =>{
+        const ctx = {
+            events: results[0],
+            places: results[1]
+        }
+        res.render('index', ctx);
+    }).catch(e => console.log(e))
 });
 
 /* GET search page */

@@ -45,11 +45,7 @@ router.post('/signup', (req,res,next)=>{
         //activation link
         //sendActivationLink(user);
         //loguearlo automaticamente
-<<<<<<< HEAD
-        res.redirect('/profile')
-=======
         res.redirect('/')
->>>>>>> e529fa6bd890646ead53113344edc841fc3e9fdf
     })
     .catch(e=>{
         req.body.err = errDict[e.name];
@@ -57,7 +53,8 @@ router.post('/signup', (req,res,next)=>{
     });
 });
 
-router.get('/login' ,isAuth, (req,res,next)=>{
+//quitar funcion isAuth
+router.get('/login' , (req,res,next)=>{
     res.render('auth/login', {next:req.query.next})
 });
 

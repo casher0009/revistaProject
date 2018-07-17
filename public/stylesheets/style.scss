@@ -24,6 +24,11 @@ body {
   text-decoration: none;
 }
 
+#logo {
+  width: 90px;
+  height: 30px;
+}
+
 header {
   //background: #55d6aa; VERDE ORIGINAL
   background: #00b386;// VERDE
@@ -33,11 +38,6 @@ header::after {
   content: '';
   display: table;
   clear: both;
-}
-
-.logo {
-  //float: left;
-  padding: 10px 0;
 }
 
 nav {  
@@ -107,11 +107,12 @@ nav a:hover::before {
   text-transform: uppercase;
 }
 
-section {
+.section-events {
   padding: 50px;
 }
 
 .section-places {
+  padding: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -119,6 +120,14 @@ section {
 
 .showing-cards {
 	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  grid-gap: 3em;
+}
+
+.showing-cards-places {
+  margin-left: 50px;
+  margin-bottom: 30px;
+  display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
   grid-gap: 3em;
 }
