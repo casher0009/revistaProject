@@ -11,9 +11,17 @@ body {
 
 .nav-container {
   // color: #444;
-  color: #FFF;
   width: 80%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.nav-container a {
+  color: #FFF;
+  text-decoration: none;
 }
 
 header {
@@ -128,4 +136,122 @@ section {
 .card-header {
   background: rgb(250, 249, 239);
   border-bottom: 0.5px solid rgb(191, 191, 191);
+}
+
+#register {
+  color: #444;
+  text-decoration: none;
+}
+
+// LOGIN STYLES
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.login-form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.login-form h1 {
+  color: #444;
+  text-transform: uppercase;
+}
+
+.login-form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.login-form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #00b386;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.login-form button:hover,.login-form button:active,.login-form button:focus {
+  background: #00b386;
+}
+.login-form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.login-form .message a {
+  color: #00b386;
+  text-decoration: none;
+}
+.login-form .register-form {
+  display: none;
+}
+
+// PROFILE PAGE STYLES
+
+.title-pen {
+  color: #444;
+  text-align: center;
+}
+
+.user-profile {
+  margin: auto;
+	width: 55em; 
+  height: 40em;
+  background: #fff;
+  border-radius: .3em;
+}
+
+.user-profile img {
+  padding: 3.7em;
+  margin-left: .3em;
+  margin-top: .3em;
+  height: 6.23em;
+  width: 6.23em;
+  border-radius: 18em;
+}
+
+.user-profile .username {
+  margin: auto;
+  margin-top: -6.40em;
+  margin-left: 9.80em;
+  margin-bottom: 15px;
+  color: #444;
+  font-size: 1.53em;
+  font-weight: bold;
+}
+
+.user-profile .mail {
+  margin: auto;
+  display: inline-block;
+  margin-left: 17.20em;
+  font-size: .87em;
+}
+
+.userplaces {
+  margin: auto;
+  margin-left: 9.80em;
+  color: #444;
+  font-size: 1.53em;
+  font-weight: bold;
 }

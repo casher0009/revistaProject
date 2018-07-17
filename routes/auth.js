@@ -45,7 +45,11 @@ router.post('/signup', (req,res,next)=>{
         //activation link
         //sendActivationLink(user);
         //loguearlo automaticamente
+<<<<<<< HEAD
         res.redirect('/profile')
+=======
+        res.redirect('/')
+>>>>>>> e529fa6bd890646ead53113344edc841fc3e9fdf
     })
     .catch(e=>{
         req.body.err = errDict[e.name];

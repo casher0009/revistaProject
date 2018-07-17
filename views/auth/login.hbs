@@ -1,12 +1,12 @@
-<h1>Ingresa</h1>
-<h2>No eres usuario? <a href="/signup"> Registrate!</a></h2>
-<form validated action="/login" method="post">
-    <p>
-        <input required placeholder="Tu correo de usuario" name="email" type="email">
-    </p>
-    <p>
-        <input required placeholder="Tu password de usuario" name="password" type="password">
-    </p>
-    <input name="next" value="{{next}}" type="hidden">
-    <input type="submit">
-</form>
+<div class="login-page">
+  <div class="login-form">
+    <h1>Ingresa</h1>
+    <form class="form" validated action="/login" method="post">
+      <input type="text" placeholder="Dirección Email" name="email" type="email" required/>
+      <input type="password" placeholder="Contraseña" name="password" type="password" required/>
+      <input name="next" value="{{next}}" type="hidden">
+      <button>ENTRAR</button>
+      <p class="message">No estás registrado? <a id="register" href="/signup">Crea una cuenta</a></p>
+    </form>
+  </div>
+</div>
