@@ -1,23 +1,28 @@
 <h2>Detalle del lugar</h2>
+{{#if user}}
 
-<img src={{photoURL}} alt="Foto del lugar Aqui" height="150px" width="300px" />
-<h1>{{placeName}}</h1>
-<p>{{cost}}</p>
-<p>{{recomendedAge}}</p>
-<p>{{location.address}}</p>
+<a href="/remove/{{place._id}}">borrar</a>
+
+{{/if}}
+
+<img src={{place.photoURL}} alt="Foto del lugar Aqui" height="150px" width="300px" />
+<h1>{{place.placeName}}</h1>
+<p>{{place.cost}}</p>
+<p>{{place.recomendedAge}}</p>
+<p>{{place.location.address}}</p>
 <p>
     <sub>Aportado por nuestro usuario:
-        <i>{{aportedBy.username}}</i>
+        <i>{{place.aportedBy.username}}</i>
     </sub>
 </p>
 <p>
     <i>
         <sub>el dia :
-            <span id="formatedHour">{{created_at}}</span>
+            <span id="formatedHour">{{place.created_at}}</span>
         </sub>
     </i>
 </p>
-<div id="mapita" heigth="100%" width="50vh"></div>
+<div id="mapita"></div>
 
 {{!-- cambiar la hora --}}
 <script>
@@ -33,10 +38,10 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzYCmApB3ysZNFYoP4TbhfHdNIhOroJtc&libraries=places"></script>
 <script>
     let center = {
-        lat: {{ location.coordinates.[1]}},
-        lng: {{ location.coordinates.[0]}}
+        lat: {{ place.location.coordinates.[1]}},
+        lng: {{ place.location.coordinates.[0]}}
     };
-    let title = '{{placeName}}'
+    let title = '{{place.placeName}}'
 
     const map = new google.maps.Map(
         document.getElementById('mapita'),
@@ -52,4 +57,7 @@
         animation: google.maps.Animation.BOUNCE
     })
 
+</script>
+<script>
+    console.log({{user.username}})
 </script>

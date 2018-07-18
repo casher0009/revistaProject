@@ -51,12 +51,30 @@ router.get("/places", (req, res) => {
     });
 });
 
-router.get("/places/:id", (req, res) => { 
+router.get("/places/:id", (req, res) => {
+  const user = req.user;
   Place.findById(req.params.id)
-  .populate("aportedBy")
+    .populate("aportedBy")
     .then(place => {
-      res.render("places/placeDetail", place);
+      let ctx = {place}
+      console.log(user._id.toString())
+      console.log("espacio")
+      console.log (place.aportedBy._id.toString())
+      if(user._id.toString() === place.aportedBy._id.toString())
+      ctx = {place,user}
+      
+      res.render("places/placeDetail", ctx);
     })
+    .catch(e => {
+      console.log(e);
+    });
+});
+
+router.get("/remove/:id", (req, res) => {
+  
+  Place.findByIdAndRemove(req.params.id)
+  
+    .then(res.redirect("/places"))
     .catch(e => {
       console.log(e);
     });

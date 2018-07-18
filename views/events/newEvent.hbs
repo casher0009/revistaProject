@@ -2,7 +2,7 @@
   Agrega un Evento</h1>
 <form action="/newEvent" method="POST" enctype="multipart/form-data">
   <p>
-    <input required placeholder="*Nombre del Evento:" type="text" name="organizedBy">
+    <input required placeholder="*Nombre del Evento:" type="text" name="eventName">
   </p>
     <div>
         <label for="datefield">Fecha/Hora:</label>
@@ -16,7 +16,7 @@
     <input id="datefield" required placeholder="*Fecha del Evento:" value="2000-01-01" type="date" min="2000-01-01" name="date">
   </p> --}}
   <p>
-    <input required placeholder="*Organizado por:" type="text" name="eventName">
+    <input required placeholder="*Organizado por:" type="text" name="organizedBy">
   </p>
  <p> <input placeholder="Breve Descripcion:" type="text" name="description"></p>
  <p> <input required type="text" name="location[address]" id="address"></p>
