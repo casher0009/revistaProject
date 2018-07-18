@@ -1,22 +1,22 @@
-<h1>Eventos</h1>
-<section>
-<div>
-    {{#each event}}
-        <div class="card">
-            <header class="card-header">
-                <p class="card-header-title">{{this.eventName}}</p></a>
-                <p id="formatedHour" class="card-header-time">{{this.date}}</p>
-            </header>
-            <div class="card-content">
-                <div class="card-description"><br><br>{{event.description}}</div>
+<section class="section-events">
+    <h2>Todos los eventos</h2>
+    <div class="showing-cards">
+        {{#each event}}
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">{{this.eventName}}</p></a>
+                    <p id="formatedHour" class="card-header-time">{{this.date}}</p>
+                </header>
+                <div class="card-content">
+                    <div class="card-description"><br><br>{{event.description}}</div>
+                </div>
+                <footer class="card-footer">
+                    <p class="card-header-org">Organizado por {{event.organizedBy}}</p>
+                    <a href="/events/{{this._id}}" class="card-footer-item"><br>Ver evento</a>
+                </footer>
             </div>
-            <footer class="card-footer">
-                <p class="card-header-org">Organizado por {{event.organizedBy}}</p>
-                <a href="/events/{{this._id}}" class="card-footer-item"><br>Ver evento</a>
-            </footer>
-        </div>
-    {{/each}}
-</div>
+        {{/each}}
+    </div>
 </section>
 
 {{!-- cambiar la hora --}}  

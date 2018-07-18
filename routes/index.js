@@ -15,7 +15,7 @@ function isAuth(req, res, next) {
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-    Promise.all([Event.find().sort({date: -1}).limit(3), Place.find().limit(3).populate("aportedBy")])
+    Promise.all([Event.find().sort({date: -1}).limit(9), Place.find().limit(9).populate("aportedBy")])
     .then(results =>{
         const ctx = {
             events: results[0],
