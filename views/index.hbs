@@ -1,11 +1,13 @@
 <div class="container">
     <div class="welcome-header">
-        <h1>Encuentra donde ir!</h1>
+        <p>ENCUENTRA DONDE IR</p>
+        <div>
+            <p>MOSTRAR FECHA DE HOY</p>
+        </div>
     </div>
     <section class="section-events">
         <h3>PRÓXIMOS EVENTOS</h3>
-        <p>SÁBADO 21 DE JULIO</p>
-
+        
         {{!-- CARDS SECTION --}}
         <div class="showing-cards">
             {{#each events as |event|}}
@@ -51,3 +53,7 @@
         {{/each}} 
     </div> 
 </div>
+
+<script>
+    var today = Date.now();
+</script>

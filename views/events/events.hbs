@@ -2,15 +2,24 @@
 <section>
 <div>
     {{#each event}}
-        <a href="/events/{{this._id}}">
-            <p>Nombre: {{this.eventName}},<br>
-            Fecha: <i><span id="formatedHour">{{this.date}}</span></i></p>
-        </a>
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">{{this.eventName}}</p></a>
+                <p id="formatedHour" class="card-header-time">{{this.date}}</p>
+            </header>
+            <div class="card-content">
+                <div class="card-description"><br><br>{{event.description}}</div>
+            </div>
+            <footer class="card-footer">
+                <p class="card-header-org">Organizado por {{event.organizedBy}}</p>
+                <a href="/events/{{this._id}}" class="card-footer-item"><br>Ver evento</a>
+            </footer>
+        </div>
     {{/each}}
 </div>
 </section>
 
-{{!-- cambiar la hora --}}
+{{!-- cambiar la hora --}}  
 <script>
     var oldHour = document.getElementById("formatedHour")
     var options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", hour12: "false" };

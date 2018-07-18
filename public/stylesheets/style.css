@@ -19,7 +19,7 @@ body {
   text-decoration: none; }
 
 #logo {
-  width: 90px;
+  width: 140px;
   height: 30px; }
 
 header {
@@ -75,7 +75,8 @@ nav a:hover::before {
   height: 50px;
   background: #444;
   text-align: center;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-size: 2em; }
 
 .container {
   color: #444;
