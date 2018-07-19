@@ -1,1 +1,28 @@
-<h1>Búsqueda</h1>
+<div class="wrap">
+
+<form class="searchr" action="/search" method="post">
+      <input type="text" class="searchTerm" name="placeName" placeholder="Lugares o Eventos?">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+</form>
+</div>
+<section>   
+<h3>lugares:</h3>
+{{#each places as | place |}}
+    <a href="/places/{{place._id}}">
+    <h2>{{place.placeName}} - <img width="40" src="{{place.photoURL}}" alt=""></h2>
+    </a>
+{{/each}}
+
+</section>
+
+<section>   
+<h3>eventos:</h3>
+{{#each events as | event |}}
+    <a href="/places/{{event._id}}">
+    <h2>{{event.eventName}} - <img width="40" src="{{event.photoURL}}" alt=""></h2>
+    </a>
+{{/each}}
+
+</section>
