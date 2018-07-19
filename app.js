@@ -67,7 +67,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Un título chingón';
+app.locals.title = 'Tamborcitos';
 //Eventos
 const event = require('./routes/event');
 app.use('/', event);

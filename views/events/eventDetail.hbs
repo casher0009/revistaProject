@@ -18,27 +18,20 @@
         </div>
         <divwidth class="div-location">
             <div id="event-text">
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i> {{event.location.address}}</h3>
-                <p>{{event.cost}}</p>
-                <p>{{event.recomendedAge}}</p>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                    <h3>{{event.location.address}}</h3>
+                    <p>{{event.cost}}</p>
+                    <p>{{event.recomendedAge}}</p>
+                </div>                
             </div>
             <div id="mapita"></divwidth>
         </divwidth>
     </divwidth>
 </divwidth>
 
-{{!--
-<p>{{cost}}</p>
-<p>{{recomendedAge}}</p>
-<p>{{location.address}}</p>
-<p>
-    <i>
-        <sub>el dia :
-            <span id="formatedHour">{{created_at}}</span>
-        </sub>
-    </i>
-</p> --}} {{!-- cambiar la hora --}}
 <script>
     var oldHour = document.getElementById("formatedHour")
     var options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", hour12: "false" };
