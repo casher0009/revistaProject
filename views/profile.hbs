@@ -1,9 +1,12 @@
 <h1 class="title-pen"> MI PERFIL</h1>
 <div class="user-profile">
     <div id="user-data">
-        <img id="photo" class="avatar" src={{photoURL}} alt="Ash" />
-        <div class="username">nombre de usuario: {{username}}</div>
-        <br><br><br>
+        <div><img id="photo" class="avatar" src={{photoURL}} alt="Ash" /></div>
+        <div id="users-info">
+            <div class="">nombre de usuario: {{username}}</div>
+            <br>
+            <div class="">correo registrado: {{email}}</div>
+        </div>
     </div>
 
     <div class="user-places">
@@ -12,8 +15,10 @@
             <div class="userplaces"><a class="green-button" href="/newEvent">Crear evento</a></div>
             <div class="userplaces"><a class="green-button" href="/logout">CERRAR SESIÓN</a></div>
         </div>
-        <div class="userplaces"> Mis lugares</div>
-        <p>{{places.placeName}}</p>
+        <div class="userplaces"> Mis lugares
+            <p><a href="#">{{places}}</p></a>
+        </div>
+        
     </div>
 </div>
 
