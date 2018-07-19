@@ -121,7 +121,6 @@ nav a:hover::before {
 .section-events {
   color: #444;
   text-align: center;
-  text-transform: uppercase;
   padding: 50px;
 }
 
@@ -166,7 +165,7 @@ nav a:hover::before {
   text-decoration: none;
 }
 
-// LOGIN STYLES
+// LOGIN / SIGNUP STYLES
 
 .login-page {
   width: 360px;
@@ -277,13 +276,38 @@ nav a:hover::before {
   color: #444;
   font-size: 1.53em;
   font-weight: bold;
+  padding-bottom: 40px;
+}
+
+.user-data {
+  display: flex;
+  
+  justify-content: space-around;
+}
+
+.add-buttons {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+.green-button{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #00b386;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 // EVENT DETAILS VIEW STYLES
-
-// .event-details {
-   
-// }
 
 .event-header {
   padding: 30px;
@@ -314,7 +338,6 @@ nav a:hover::before {
 
 .left-info img {
   border-radius: 5px;
-  // padding: 20px;
 }
 
 #event-description {
@@ -328,14 +351,12 @@ nav a:hover::before {
   height: 40%;
   background: #FFF;
   border-radius: 10px;
-  // margin: 0;
-  // padding: 0;
-  // padding-top: 0;
-  // padding-left: 100px;
-  // padding-right: 80px;
 }
 
 #event-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   padding: 10px;
 }
 
@@ -384,3 +405,17 @@ nav a:hover::before {
 }
 
 //buscador
+#event-text i {
+  font-size: 40px;
+  padding-top: 18px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+#event-text p {
+  font-style: italic;
+}
+#mapita {
+  width: 70vh;
+  height: 30vh;
+}
