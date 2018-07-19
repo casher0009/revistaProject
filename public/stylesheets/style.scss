@@ -121,7 +121,6 @@ nav a:hover::before {
 .section-events {
   color: #444;
   text-align: center;
-  text-transform: uppercase;
   padding: 50px;
 }
 
@@ -166,7 +165,7 @@ nav a:hover::before {
   text-decoration: none;
 }
 
-// LOGIN STYLES
+// LOGIN / SIGNUP STYLES
 
 .login-page {
   width: 360px;
@@ -281,10 +280,6 @@ nav a:hover::before {
 
 // EVENT DETAILS VIEW STYLES
 
-// .event-details {
-   
-// }
-
 .event-header {
   padding: 30px;
   background-color: #444;
@@ -314,7 +309,6 @@ nav a:hover::before {
 
 .left-info img {
   border-radius: 5px;
-  // padding: 20px;
 }
 
 #event-description {
@@ -328,20 +322,22 @@ nav a:hover::before {
   height: 40%;
   background: #FFF;
   border-radius: 10px;
-  // margin: 0;
-  // padding: 0;
-  // padding-top: 0;
-  // padding-left: 100px;
-  // padding-right: 80px;
 }
 
 #event-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   padding: 10px;
 }
 
+#event-text i {
+  font-size: 40px;
+  padding-top: 18px;
+  padding-right: 20px;
+}
+
 #mapita {
-  width: 50vh;
+  width: 70vh;
   height: 30vh;
-  //border-radius: 100%;
-  //border: 2px solid rebeccapurple;
 }
