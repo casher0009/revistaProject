@@ -54,7 +54,8 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
 router.get("/activation", isLoggedIn, (req, res, next) => {
   User.findByIdAndUpdate(req.user._id, { active: true }, { new: true })
     .then(user => {
-      res.send("Activado, gracias " + user.username);
+      res.send("Activado, gracias " + user.username)
+      setTimeout(res.redirect("/"),1000);
     })
     .catch(e => next(e));
 });
