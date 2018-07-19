@@ -3,8 +3,10 @@ const router = express.Router();
 const Event = require("../models/Event");
 const passport = require("passport");
 const multer = require("multer");
-const upload = multer({ dest: "./public/assets" });
+// const upload = multer({ dest: "./public/assets" });
 const User = require("../models/User");
+const uploadCloud = require("../helpers/cloudinary");
+
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -16,9 +18,9 @@ router.get("/newEvent", isLoggedIn, (req, res, next) => {
   res.render("events/newEvent");
 });
 
-router.post("/newEvent", upload.single("photo"), (req, res, next) => {
+router.post("/newEvent", uploadCloud.single("photo"), (req, res, next) => {
   if (req.file) {
-    req.body.photoURL = "/assets/" + req.file.filename;
+    req.user.photoURL = req.file.url;
     req.body.aportedBy = req.user._id;
     Event.create(req.body)
       .then(event =>
