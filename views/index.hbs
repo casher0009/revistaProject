@@ -4,7 +4,7 @@
     </div>
     <section class="section-events">
         <h3>PRÓXIMOS EVENTOS</h3>
-        <p>//MOSTRAR FECHA DE HOY//<br>--JALAR PRIMEROS 3 EVENTOS DE FECHA ACTUAL--</p>
+        <p>{{today}}<br></p>
         
         {{!-- CARDS SECTION --}}
         <div class="showing-cards">
@@ -45,7 +45,7 @@
                     <div class="card-description"><br>{{place.description}}<br></div>
                 </div>
                 <footer class="card-footer">
-                    <a href="#" class="card-footer-item"><br>Más</a>
+                    <a href="/places/{{_id}}" class="card-footer-item"><br>Más</a>
                 </footer>
             </div>
         {{/each}} 

@@ -67,11 +67,6 @@ router.get("/contact", (req, res, next) => {
   res.render("contact");
 });
 
-/* GET books page */
-router.get("/books", (req, res, next) => {
-  res.render("books");
-});
-
 /* GET places page */
 router.get("/places", (req, res, next) => {
   res.render("places");
