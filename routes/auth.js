@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const passport = require("passport");
 const uploadCloud = require("../helpers/cloudinary");
+const sendActivationLink = require('../helpers/mailer').sendActivationLink;
 
 //funciones de Autenticacion
 
@@ -71,7 +72,7 @@ router.post('/signup', (req,res,next)=>{
     .then(user=>{
         console.log('entraste')
         //activation link
-        //sendActivationLink(user);
+        sendActivationLink(user);
         //loguearlo automaticamente
         res.redirect('/')
     })

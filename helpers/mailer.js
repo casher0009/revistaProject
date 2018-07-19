@@ -13,10 +13,10 @@ const transporter = nodemailer.createTransport(
 
 exports.sendActivationLink = (user) => {
     const options = {
-        from: '"Your 👻" <fixtergeek@gmail.com>', // sender address
+        from: '"Richard 👻" <the.cahser.uber@gmail.com>', // sender address
         to: user.email, // list of receivers
-        subject: 'Bienvenido ✔', // Subject line
-        html: `<h2>Activa tu cuenta: <a href="http://localhost:3000/activation"> Click aqui </a></h2>`, // plain text body
+        subject: 'Bienvenido a tamborcitos ✔', // Subject line
+        html: `<h2>Activa tu cuenta: <a href="https://young-tor-25184.herokuapp.com/activation"> Click aqui </a></h2>`, // plain text body
         //html: '<b>Hello world?</b>' // html body
     };
     transporter.sendMail(options, (err,info)=>{

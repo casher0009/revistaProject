@@ -15,11 +15,11 @@ const passport = require('./helpers/passport');
 
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/revistaproject', {useMongoClient: true})
+mongoose.connect(process.env.DBHEROKU, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
-    console.error('Error connecting to mongo', err)
+    console.error('Error connecting to mongo', err) 
   });
 
 const app_name = require('./package.json').name;
