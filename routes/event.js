@@ -7,7 +7,6 @@ const multer = require("multer");
 const User = require("../models/User");
 const uploadCloud = require("../helpers/cloudinary");
 
-
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
   return res.redirect("/login?next=/profile");
@@ -55,19 +54,42 @@ router.get("/events", (req, res) => {
 
 router.get("/events/:id", (req, res) => {
   const user = req.user;
-  Event.findById(req.params.id)
-    .populate("aportedBy")
+  console.log(user)
+  if (user === undefined){
+    Event.findById(req.params.id)
     .then(event => {
-      let ctx = { event };
-      if (user._id.toString() === event.aportedBy._id.toString())
-        ctx = { event, user };
-
-      res.render("events/eventDetail", ctx);
-    })
-    .catch(e => {
-      console.log(e);
+      res.render("events/eventDetail", {event});
     });
+  } else{
+    Event.findById(req.params.id)
+      .populate("aportedBy")
+      .then(event => {
+        let ctx = { event };
+        if (user._id.toString() === event.aportedBy._id.toString())
+          ctx = { event, user };
+
+        res.render("events/eventDetail", ctx);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
 });
+
+// router.get("/events/:id", (req, res) => {
+//   const user = req.user;
+//   Event.findById(req.params.id)
+//     .populate("aportedBy")
+//     .then(event => {
+//       let ctx = { event };
+//       if (user._id.toString() === event.aportedBy._id.toString()) ctx = { event, user };
+
+//       res.render("events/eventDetail", ctx);
+//     })
+//     .catch(e => {
+//       console.log(e);
+//     });
+// });
 
 router.get("/remove/:id", (req, res) => {
   Promise.all([

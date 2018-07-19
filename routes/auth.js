@@ -18,7 +18,7 @@ function isAuth(req, res, next) {
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
-  return res.redirect("/login?next=/activation");
+  return res.redirect("/login");
 }
 
 //para cambiar la foto de perfil y el photoURL
@@ -41,8 +41,6 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
     User.findById(req.user._id)
     .populate("places", "events")
     .then(both => {
-        console.log (both, "ambos")
-        console.log(req.user._id , "esta es el id")
       res.render("profile", both);
     })
     .catch(e => {
@@ -51,14 +49,14 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
 });
 
 //Ruta para cambiar al usuario por activo
-router.get("/activation", isLoggedIn, (req, res, next) => {
-  User.findByIdAndUpdate(req.user._id, { active: true }, { new: true })
-    .then(user => {
-      res.send("Activado, gracias " + user.username)
-      setTimeout(res.redirect("/"),1000);
-    })
-    .catch(e => next(e));
-});
+// router.get("/activation", isLoggedIn, (req, res, next) => {
+//   User.findByIdAndUpdate(req.user._id, { active: true }, { new: true })
+//     .then(user => {
+//       res.send("Activado, gracias " + user.username)
+//       setTimeout(res.redirect("/"),500);
+//     })
+//     .catch(e => next(e));
+// });
 
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
@@ -75,7 +73,7 @@ router.post('/signup', (req,res,next)=>{
         //activation link
         sendActivationLink(user);
         //loguearlo automaticamente
-        res.redirect('/')
+        res.redirect('/profile')
     })
     .catch(e => {
       req.body.err = errDict[e.name];

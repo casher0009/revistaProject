@@ -1,28 +1,13 @@
-{{!-- <h2>Detalle del lugar</h2>
+<h2>Detalle del lugar</h2>
 {{#if user}}
 
 <a href="/remove/{{place._id}}">borrar</a>
 
-{{/if}}
-
-<img src={{place.photoURL}} alt="Foto del lugar Aqui" height="150px" width="300px" />
-<h1>{{place.placeName}}</h1>
-<p>{{place.cost}}</p>
-<p>{{place.recomendedAge}}</p>
-<p>{{place.location.address}}</p>
-<p>
-    <sub>Aportado por nuestro usuario:
-        <i>{{place.aportedBy.username}}</i>
-    </sub>
-</p>
-<p>
-    <i>
-        <sub>el dia :
-            <span id="formatedHour">{{place.created_at}}</span>
+        <sub>Aportado por nuestro usuario:
+            <i>{{user.username}}</i>
         </sub>
-    </i>
-</p>
-<div id="mapita"></div> --}}
+
+{{/if}} 
 
 <div class="event-details">
     <div class="event-header">
@@ -30,9 +15,6 @@
             <span id="formatedHour">{{place.date}}</span>
         </h3> --}}
         <h2>{{place.placeName}}</h2>
-        <sub>Aportado por nuestro usuario:
-            <i>{{user.username}}</i>
-        </sub>
     </div>
     <div class="event-info">
         <div class="left-info">
