@@ -27,5 +27,13 @@
   {{{body}}}  
 
   <script src='/javascripts/script.js'></script>
+  {{#if user}}
+  <script>
+var boton = document.getElementById("profile").innerHTML
+console.log(boton)
+console.log(req.user)
+console.log({{user}})
+</script>
+  {{/if}}
   </body>
 </html>
