@@ -1,71 +1,29 @@
 <div class="container">
     <div class="welcome-header">
-        <h1>Encuentra donde ir!</h1>
+        <p>ENCUENTRA DONDE IR</p>
     </div>
     <section class="section-events">
         <h3>PRÓXIMOS EVENTOS</h3>
-        {{!-- <a href="/events">Ver más</a> --}}
-        <p>SÁBADO 21 DE JULIO</p>
-
+        <p>//MOSTRAR FECHA DE HOY//<br>--JALAR PRIMEROS 3 EVENTOS DE FECHA ACTUAL--</p>
+        
         {{!-- CARDS SECTION --}}
         <div class="showing-cards">
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">Event.title</p>
-                    <p class="card-header-time">6:00 PM</p>
-                </header>
-                <div class="card-content">
-                    <div class="card-description"><br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quae nesciunt tempora hic sed quos iusto officiis quia, iste magni repudiandae enim animi inventore libero porro, quasi reprehenderit quidem explicabo?<br></div>
+            {{#each events as |event|}}
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">{{event.eventName}}</p>
+                        <p class="card-header-time">{{event.date}}</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="card-description"><br><br>{{event.description}}</div>
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-header-org">Organizado por {{event.organizedBy}}</p>
+                        <a href="/events/{{event._id}}" class="card-footer-item"><br>Ver evento</a>
+                    </footer>
                 </div>
-                <footer class="card-footer">
-                    <p class="card-header-org">Organizado por -</p>
-                    <a href="#" class="card-footer-item"><br>Ver evento</a>
-                </footer>
-            </div>
-
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">Event.title</p>
-                    <p class="card-header-time">6:00 PM</p>
-                </header>
-                <div class="card-content">
-                    <div class="card-description"><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde praesentium suscipit eos velit, aut vitae odio nostrum. Laudantium autem harum odio ipsa, sint saepe similique fugiat repellat expedita illo? Veritatis?<br></div>
-                </div>
-                <footer class="card-footer">
-                    <p class="card-header-org">Organizado por -</p>
-                    <a href="#" class="card-footer-item"><br>Ver evento</a>
-                </footer>
-            </div>
-
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">Event.title</p>
-                    <p class="card-header-time">6:00 PM</p>
-                </header>
-                <div class="card-content">
-                    <div class="card-description"><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur excepturi ratione incidunt sunt nulla eos, odit porro modi ab quas facere exercitationem ullam, cupiditate neque vitae ipsa? Hic, eos! Et?<br></div>
-                </div>
-                <footer class="card-footer">
-                    <p class="card-header-org">Organizado por -</p>
-                    <a href="#" class="card-footer-item"><br>Ver evento</a>
-                </footer>
-            </div>
-
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">Event.title</p>
-                    <p class="card-header-time">6:00 PM</p>
-                </header>
-                <div class="card-content">
-                    <div class="card-description"><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam laudantium deleniti corporis neque ut, dolore accusantium voluptatum consequatur velit esse veritatis commodi facilis recusandae, nobis sunt corrupti dolorem officiis iste.<br></div>
-                </div>
-                <footer class="card-footer">
-                    <p class="card-header-org">Organizado por -</p>
-                    <a href="#" class="card-footer-item"><br>Ver evento</a>
-                </footer>
-            </div>
+            {{/each}}
         </div>
-
     </section>
 
     <section class="section-places">
@@ -75,52 +33,25 @@
         <div id="ver-mas">
             <a href="/places"><br>Ver más</a>
         </div> 
-        
     </section>
-        <div class="showing-cards">
+
+    <div class="showing-cards-places">
+        {{#each places as |place|}}
             <div class="card">
                 <header class="card-header">
-                    <p class="card-header-title">Event.title</p>
-                    <p class="card-header-time">6:00 PM</p>
+                    <p class="card-header-title">{{place.placeName}}</p>
                 </header>
                 <div class="card-content">
-                    <div class="card-description"><br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quae nesciunt tempora hic sed quos iusto officiis quia, iste magni repudiandae enim animi inventore libero porro, quasi reprehenderit quidem explicabo?<br></div>
+                    <div class="card-description"><br>{{place.description}}<br></div>
                 </div>
                 <footer class="card-footer">
-                    <p class="card-header-org">Organizado por -</p>
-                    <a href="#" class="card-footer-item"><br>Ver evento</a>
+                    <a href="#" class="card-footer-item"><br>Más</a>
                 </footer>
             </div>
-        </div>
-        
+        {{/each}} 
+    </div> 
 </div>
 
 <script>
-    function getBookDetails(isbn) {
-  
-        // Query the book database by ISBN code.
-        isbn = isbn || "9781451648546"; // Steve Jobs book 
-        
-        let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
-        
-        let response = UrlFetchApp.fetch(url);
-        let results = JSON.parse(response);
-        
-        if (results.totalItems) {
-            
-            // There'll be only 1 book per ISBN
-            var book = results.items[0];
-            var title = (book["volumeInfo"]["title"]);
-            var subtitle = (book["volumeInfo"]["subtitle"]);
-            var authors = (book["volumeInfo"]["authors"]);
-            var printType = (book["volumeInfo"]["printType"]);
-            var pageCount = (book["volumeInfo"]["pageCount"]);
-            var publisher = (book["volumeInfo"]["publisher"]);
-            var publishedDate = (book["volumeInfo"]["publishedDate"]);
-            var webReaderLink = (book["accessInfo"]["webReaderLink"]);
-            
-            console.log(book);
-        
-        }        
-    }
+    var today = Date.now();
 </script>

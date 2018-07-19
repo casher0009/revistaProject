@@ -1,10 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Gloria+Hallelujah");
 body {
   margin: 0;
   background: rgba(235, 255, 240, 0.625);
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 800;
-  font-size: 14px; }
+  font-size: 14px;
+  color: #444; }
+
+#title-logo {
+  font-family: 'Gloria Hallelujah', cursive;
+  color: #FFF;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 18px; }
 
 .nav-container {
   width: 80%;
@@ -18,6 +28,10 @@ body {
   color: #FFF;
   text-decoration: none; }
 
+#logo {
+  width: 140px;
+  height: 30px; }
+
 header {
   background: #00b386; }
 
@@ -25,9 +39,6 @@ header::after {
   content: '';
   display: table;
   clear: both; }
-
-.logo {
-  padding: 10px 0; }
 
 nav {
   float: right;
@@ -74,7 +85,8 @@ nav a:hover::before {
   height: 50px;
   background: #444;
   text-align: center;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-size: 2em; }
 
 .container {
   color: #444;
@@ -85,15 +97,26 @@ nav a:hover::before {
   text-decoration: none;
   text-transform: uppercase; }
 
-section {
+.section-events {
+  color: #444;
+  text-align: center;
+  text-transform: uppercase;
   padding: 50px; }
 
 .section-places {
+  padding: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between; }
 
 .showing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 3em; }
+
+.showing-cards-places {
+  margin-left: 50px;
+  margin-bottom: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 3em; }
@@ -214,10 +237,47 @@ section {
   font-size: 1.53em;
   font-weight: bold; }
 
+.event-header {
+  padding: 30px;
+  background-color: #444;
+  color: #FFF; }
+
+.event-header h2 {
+  font-style: italic;
+  font-size: 2em; }
+
+.event-info {
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+
+#event-text {
+  padding: 10px; }
+
+.left-info {
+  width: 40em;
+  padding: 10px; }
+
+.left-info img {
+  border-radius: 5px; }
+
+#event-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px; }
+
+.div-location {
+  overflow: auto;
+  width: 30%;
+  height: 40%;
+  background: #FFF;
+  border-radius: 10px; }
+
+#event-text {
+  padding: 10px; }
+
 #mapita {
-  width: 50vw;
-  height: 65vh;
-  border-radius: 100%;
-  border: 2px solid rebeccapurple; }
+  width: 50vh;
+  height: 30vh; }
 
 /*# sourceMappingURL=style.css.map */

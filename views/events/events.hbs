@@ -1,21 +1,29 @@
-<h1>Eventos</h1>
-<section>
-    <div>
+<section class="section-events">
+    <h2>Todos los eventos</h2>
+    <div class="showing-cards">
         {{#each event}}
-        <a href="/events/{{this._id}}">
-            <p>Nombre: {{this.eventName}},
-                <br> Fecha:
-                <i>
-                    <span class="formatedHour" id="formatedHour">
-                        {{this.date.[8]}} {{this.date.[9]}} {{this.date.[7]}} {{this.date.[5]}} {{this.date.[6]}} {{this.date.[4]}} {{this.date.[0]}}
-                        {{this.date.[1]}} {{this.date.[2]}} {{this.date.[3]}} a las {{this.date.[11]}} {{this.date.[12]}}
-                        {{this.date.[13]}} {{this.date.[14]}} {{this.date.[15]}} {{this.date.[16]}} {{this.date.[17]}} {{this.date.[18]}}
-                        {{this.date.[19]}}
-                    </span>
-                </i>
-            </p>
-        </a>
-
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">{{this.eventName}}</p></a>
+                    <p id="formatedHour" class="card-header-time">{{this.date}}</p>
+                </header>
+                <div class="card-content">
+                    <div class="card-description"><br><br>{{event.description}}</div>
+                </div>
+                <footer class="card-footer">
+                    <p class="card-header-org">Organizado por {{event.organizedBy}}</p>
+                    <a href="/events/{{this._id}}" class="card-footer-item"><br>Ver evento</a>
+                </footer>
+            </div>
         {{/each}}
     </div>
 </section>
+
+{{!-- cambiar la hora --}}  
+<script>
+    var oldHour = document.getElementById("formatedHour")
+    var options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", hour12: "false" };
+    var myDate = new Date(oldHour.innerHTML);
+    var newDate = myDate.toLocaleString("es-ES", options)
+    oldHour.innerHTML = newDate
+</script>

@@ -62,18 +62,18 @@ router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", (req, res, next) => {
-  if (req.body.password !== req.body.password2) {
-    req.body.err = "Tu password no coincide";
-    res.render("auth/signup", req.body);
-  }
-  User.register(req.body, req.body.password)
-    .then(user => {
-      console.log("entraste");
-      //activation link
-      // sendActivationLink(user);
-      //loguearlo automaticamente
-      res.redirect("/profile");
+router.post('/signup', (req,res,next)=>{
+    if(req.body.password !== req.body.password2){
+        req.body.err = "Tu password no coincide"
+        res.render('auth/signup', req.body)
+    }
+    User.register(req.body, req.body.password)
+    .then(user=>{
+        console.log('entraste')
+        //activation link
+        //sendActivationLink(user);
+        //loguearlo automaticamente
+        res.redirect('/')
     })
     .catch(e => {
       req.body.err = errDict[e.name];
@@ -81,8 +81,9 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.get("/login", isAuth, (req, res, next) => {
-  res.render("auth/login", { next: req.query.next });
+//quitar funcion isAuth
+router.get('/login' , (req,res,next)=>{
+    res.render('auth/login', {next:req.query.next})
 });
 
 router.post("/login", passport.authenticate("local"), (req, res, next) => {
