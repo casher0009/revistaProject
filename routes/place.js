@@ -3,8 +3,10 @@ const router = express.Router();
 const Place = require("../models/Place");
 const passport = require("passport");
 const multer = require("multer");
-const upload = multer({ dest: "./public/assets" });
+// const upload = multer({ dest: "./public/assets" });
 const User = require("../models/User");
+const uploadCloud = require("../helpers/cloudinary");
+const sendActivationLink = require('../helpers/mailer').sendActivationLink;
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -16,9 +18,9 @@ router.get("/newPlace", isLoggedIn, (req, res, next) => {
   res.render("places/newPlace");
 });
 
-router.post("/newPlace", upload.single("photo"), (req, res, next) => {
+router.post("/newPlace", uploadCloud.single("photo"), (req, res, next) => {
   if (req.file) {
-    req.body.photoURL = "/assets/" + req.file.filename;
+    req.user.photoURL = req.file.url;
     req.body.aportedBy = req.user._id;
     Place.create(req.body)
       .then(place =>
