@@ -64,7 +64,7 @@ router.get("/places/:id", (req, res) => {
     Place.findById(req.params.id)
       .populate("aportedBy")
       .then(place => {
-        let ctx = { event };
+        let ctx = { place };
         if (user._id.toString() === event.aportedBy._id.toString())
           ctx = { place, user };
 
