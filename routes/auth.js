@@ -29,7 +29,7 @@ router.post(
   (req, res, next) => {
     if (!req.file) redirect("/profile");
     req.user.photoURL = req.file.url;
-    User.findOneAndUpdate(req.user._id, req.user, { new: true })
+    User.findByIdAndUpdate(req.user._id, req.user, { new: true })
       .then(user => {
         res.redirect("/profile");
       })
