@@ -23,10 +23,10 @@ router.get('/search', (req, res, next) => {
   res.render('search');
 });
 
-/* GET profile page */ 
-router.get('/profile',isLoggedIn, (req, res, next) => {
-  res.render('profile');
-});
+// /* GET profile page */ 
+// router.get('/profile',isLoggedIn, (req, res, next) => {
+//   res.render('profile');
+// });
 
 /* GET contact page */
 router.get('/contact', (req, res, next) => {

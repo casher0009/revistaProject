@@ -1,20 +1,25 @@
 <h2>Detalle del Evento</h2>
+{{#if user}}
 
-<img src={{photoURL}} alt="Foto del evento Aqui" height="150px" width="300px" >
-<h1>{{eventName}}</h1>
-<h2 id="fechaEvento" >{{date}}</h2>
-<p>{{cost}}</p>
-<p>{{recomendedAge}}</p>
-<p>{{location.address}}</p>
+<a href="/remove/{{event._id}}">borrar</a>
+
+{{/if}}
+
+<img src={{event.photoURL}} alt="Foto del evento Aqui" height="150px" width="300px" >
+<h1>{{event.eventName}}</h1>
+<h2 id="fechaEvento" >{{event.date}}</h2>
+<p>{{event.cost}}</p>
+<p>{{event.recomendedAge}}</p>
+<p>{{event.location.address}}</p>
 <p>
     <sub>Aportado por nuestro usuario:
-        <i>{{aportedBy.username}}</i>
+        <i>{{event.aportedBy.username}}</i>
     </sub>
 </p>
 <p>
     <i>
         <sub>el dia :
-            <span id="formatedHour">{{created_at}}</span>
+            <span id="formatedHour">{{event.created_at}}</span>
         </sub>
     </i>
 </p>
@@ -38,10 +43,10 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzYCmApB3ysZNFYoP4TbhfHdNIhOroJtc&libraries=places"></script>
 <script>
     let center = {
-        lat: {{ location.coordinates.[1]}},
-        lng: {{ location.coordinates.[0]}}
+        lat: {{ event.location.coordinates.[1]}},
+        lng: {{ event.location.coordinates.[0]}}
     };
-    let title = '{{eventName}}'
+    let title = '{{event.eventName}}'
 
     const map = new google.maps.Map(
         document.getElementById('mapita'),
@@ -50,8 +55,17 @@
             zoom: 15
         }
     )
+        var icono = {
+        url:"https://cdn2.iconfinder.com/data/icons/map-pins-1-01-easylines/128/yumminky-pin-78-512.png",
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(35, 35)
+
+    }
     const marker = new google.maps.Marker({
         map,
+        icon: icono,
         position: center,
         title,
         animation: google.maps.Animation.BOUNCE

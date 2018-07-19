@@ -52,10 +52,32 @@ router.get("/events", (req, res) => {
 });
 
 router.get("/events/:id", (req, res) => {
+  const user = req.user;
   Event.findById(req.params.id)
     .populate("aportedBy")
     .then(event => {
-      res.render("events/eventDetail", event);
+      let ctx = { event };
+      if (user._id.toString() === event.aportedBy._id.toString())
+        ctx = { event, user };
+
+      res.render("events/eventDetail", ctx);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+});
+
+router.get("/remove/:id", (req, res) => {
+  Promise.all([
+    Event.findByIdAndRemove(req.params.id),
+    User.findOneAndUpdate(
+      { events: req.params.id },
+      { $pull: { events: req.params.id } },
+      { new: true }
+    )
+  ])
+    .then(results => {
+      res.redirect("/events");
     })
     .catch(e => {
       console.log(e);

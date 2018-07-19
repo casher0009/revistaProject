@@ -1,19 +1,31 @@
 
 <h1>Profile</h1>
 
-<h2>{{username}}</h2>
 
 <h1 class="title-pen"> MI PERFIL</h1>
 <div class="user-profile">
     <div id="user-data">
-        <img class="avatar" src="https://www.shareicon.net/download/2016/09/01/822739_user_512x512.png" alt="Ash" />
-        <div class="username">Mi nombre</div>
-        <input class="mail" type="text" placeholder="your user email">
+        <img id="photo" class="avatar" src={{photoURL}} alt="Ash" />
+        <div class="username">{{username}}</div>
         <br><br><br>
     </div>
 
     <div class="user-places">
         <div class="userplaces"> Mis lugares</div>
+        <p>{{places.placeName}}</p>
     </div>
 </div>
 
+<form id="form" action="/profile" method="post" enctype="multipart/form-data">
+<input onchange="submitForm()" name="foto" id="file" style="display:none" type="file">
+</form>
+
+<script>
+    document.getElementById('photo').addEventListener('click', function(){
+        document.getElementById('file').click();
+    });
+
+    function submitForm(e){
+       document.getElementById('form').submit();
+    }
+</script>
