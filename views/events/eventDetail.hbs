@@ -2,11 +2,11 @@
 
 <a href="/remove/{{event._id}}">borrar</a>
 
-        <sub>Aportado por nuestro usuario:
-            <i>{{user.username}}</i>
-        </sub>
+<sub>Aportado por nuestro usuario:
+    <i>{{user.username}}</i>
+</sub>
 
-{{/if}} 
+{{/if}}
 
 <div class="event-details">
     <div class="event-header">
@@ -14,9 +14,6 @@
             <span id="formatedHour">{{event.date}}</span>
         </h3>
         <h2>{{event.eventName}}</h2>
-        <sub>Aportado por nuestro usuario:
-            <i>{{user.username}}</i>
-        </sub>
     </div>
     <div class="event-info">
         <div class="left-info">
@@ -35,7 +32,7 @@
                     <h3>{{event.location.address}}</h3>
                     <p>{{event.cost}}</p>
                     <p>{{event.recomendedAge}}</p>
-                </div>                
+                </div>
             </div>
             <div id="mapita"></div>
         </div>
