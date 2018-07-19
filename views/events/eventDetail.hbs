@@ -58,10 +58,10 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzYCmApB3ysZNFYoP4TbhfHdNIhOroJtc&libraries=places"></script>
 <script>
     let center = {
-        lat: {{ location.coordinates.[1]}},
-        lng: {{ location.coordinates.[0]}}
+        lat: {{ event.location.coordinates.[1]}},
+        lng: {{ event.location.coordinates.[0]}}
     };
-    let title = '{{eventName}}'
+    let title = '{{event.eventName}}'
 
     const map = new google.maps.Map(
         document.getElementById('mapita'),
@@ -70,8 +70,17 @@
             zoom: 15
         }
     )
+        var icono = {
+        url:"https://cdn2.iconfinder.com/data/icons/map-pins-1-01-easylines/128/yumminky-pin-78-512.png",
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(35, 35)
+
+    }
     const marker = new google.maps.Marker({
         map,
+        icon: icono,
         position: center,
         title,
         animation: google.maps.Animation.BOUNCE

@@ -1,37 +1,65 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const User = require('../models/User');
-const passport = require('passport');
+const User = require("../models/User");
+const passport = require("passport");
+const uploadCloud = require("../helpers/cloudinary");
 
 //funciones de Autenticacion
 
 const errDict = {
-    UserExistsError: "Este usuario ya existe"
-  };
-  
-  function isAuth(req, res, next) {
-    if (req.isAuthenticated()) return res.redirect("/profile");
-    return next();
-  }
-  
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    return res.redirect("/login?next=/activation");
-  }
-  
-  //Ruta para cambiar al usuario por activo
-  router.get("/activation", isLoggedIn, (req, res, next) => {
-    User.findByIdAndUpdate(req.user._id, { active: true }, { new: true })
+  UserExistsError: "Este usuario ya existe"
+};
+
+function isAuth(req, res, next) {
+  if (req.isAuthenticated()) return res.redirect("/profile");
+  return next();
+}
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  return res.redirect("/login?next=/activation");
+}
+
+//para cambiar la foto de perfil y el photoURL
+router.post(
+  "/profile",
+  isLoggedIn,
+  uploadCloud.single("foto"),
+  (req, res, next) => {
+    if (!req.file) redirect("/profile");
+    req.user.photoURL = req.file.url;
+    User.findOneAndUpdate(req.user._id, req.user, { new: true })
       .then(user => {
-        res.send("Activado, gracias " + user.username);
+        res.redirect("/profile");
       })
       .catch(e => next(e));
-  });
-  
+  }
+);
 
+router.get("/profile", isLoggedIn, (req, res, next) => {
+    User.findById(req.user._id)
+    .populate("places", "events")
+    .then(both => {
+        console.log (both, "ambos")
+        console.log(req.user._id , "esta es el id")
+      res.render("profile", both);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+});
 
-router.get('/signup', (req,res,next)=>{
-    res.render('auth/signup')
+//Ruta para cambiar al usuario por activo
+router.get("/activation", isLoggedIn, (req, res, next) => {
+  User.findByIdAndUpdate(req.user._id, { active: true }, { new: true })
+    .then(user => {
+      res.send("Activado, gracias " + user.username);
+    })
+    .catch(e => next(e));
+});
+
+router.get("/signup", (req, res, next) => {
+  res.render("auth/signup");
 });
 
 router.post('/signup', (req,res,next)=>{
@@ -47,9 +75,9 @@ router.post('/signup', (req,res,next)=>{
         //loguearlo automaticamente
         res.redirect('/')
     })
-    .catch(e=>{
-        req.body.err = errDict[e.name];
-        res.render('auth/signup', req.body)
+    .catch(e => {
+      req.body.err = errDict[e.name];
+      res.render("auth/signup", req.body);
     });
 });
 
@@ -58,15 +86,15 @@ router.get('/login' , (req,res,next)=>{
     res.render('auth/login', {next:req.query.next})
 });
 
-router.post('/login', passport.authenticate('local'), (req,res,next)=>{
-    if(req.body.next) res.redirect(req.body.next);
-    req.app.locals.loggedUser = req.user;
-    res.redirect('/profile')
-}); 
+router.post("/login", passport.authenticate("local"), (req, res, next) => {
+  if (req.body.next) res.redirect(req.body.next);
+  req.app.locals.loggedUser = req.user;
+  res.redirect("/profile");
+});
 
-router.get('/logout', (req,res,next)=>{
-    req.logout();
-    res.redirect('/')
+router.get("/logout", (req, res, next) => {
+  req.logout();
+  res.redirect("/");
 });
 
 module.exports = router;

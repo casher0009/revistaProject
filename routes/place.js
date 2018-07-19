@@ -24,7 +24,7 @@ router.post("/newPlace", upload.single("photo"), (req, res, next) => {
       .then(place =>
         User.findByIdAndUpdate(req.user._id, { $push: { places: place._id } })
       )
-      .then(res.redirect("/places"))
+      .then(res.redirect("/profile"))
       .catch(e => {
         console.log(e);
       });
@@ -34,7 +34,7 @@ router.post("/newPlace", upload.single("photo"), (req, res, next) => {
       .then(place =>
         User.findByIdAndUpdate(req.user._id, { $push: { places: place._id } })
       )
-      .then(res.redirect("/places"))
+      .then(res.redirect("/profile"))
       .catch(e => {
         console.log(e);
       });
@@ -51,11 +51,33 @@ router.get("/places", (req, res) => {
     });
 });
 
-router.get("/places/:id", (req, res) => { 
+router.get("/places/:id", (req, res) => {
+  const user = req.user;
   Place.findById(req.params.id)
-  .populate("aportedBy")
+    .populate("aportedBy")
     .then(place => {
-      res.render("places/placeDetail", place);
+      let ctx = { place };
+      if (user._id.toString() === place.aportedBy._id.toString())
+        ctx = { place, user };
+
+      res.render("places/placeDetail", ctx);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+});
+
+router.get("/remove/:id", (req, res) => {
+  Promise.all([
+    Place.findByIdAndRemove(req.params.id),
+    User.findOneAndUpdate(
+      { places: req.params.id },
+      { $pull: { places: req.params.id } },
+      { new: true }
+    )
+  ])
+    .then(results => {
+      res.redirect("/places");
     })
     .catch(e => {
       console.log(e);
