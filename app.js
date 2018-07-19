@@ -15,7 +15,7 @@ const passport = require('./helpers/passport');
 
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/revistaproject', {useMongoClient: true})
+mongoose.connect(process.env.DB, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
