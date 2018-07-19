@@ -71,7 +71,7 @@ router.post('/signup', (req,res,next)=>{
     .then(user=>{
         console.log('entraste')
         //activation link
-        //sendActivationLink(user);
+        sendActivationLink(user);
         //loguearlo automaticamente
         res.redirect('/')
     })
