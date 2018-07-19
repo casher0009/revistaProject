@@ -1,4 +1,4 @@
-<divwidth class="event-details">
+<div class="event-details">
     <div class="event-header">
         <h3 id="fechaEvento">
             <span id="formatedHour">{{event.date}}</span>
@@ -8,7 +8,7 @@
             <i>{{user.username}}</i>
         </sub>
     </div>
-    <divwidth class="event-info">
+    <div class="event-info">
         <div class="left-info">
             <img src={{event.photoURL}} alt="event_picture" height="300px" width="600px">
             <h3>Detalles del evento</h3>
@@ -16,17 +16,17 @@
                 {{event.description}}
             </p>
         </div>
-        <divwidth class="div-location">
+        <div class="div-location">
             <div id="event-text">
                 <h3>
                     <i class="fas fa-map-marker-alt"></i> {{event.location.address}}</h3>
                 <p>{{event.cost}}</p>
                 <p>{{event.recomendedAge}}</p>
             </div>
-            <div id="mapita"></divwidth>
-        </divwidth>
-    </divwidth>
-</divwidth>
+            <div id="mapita"></div>
+        </div>
+    </div>
+</div>
 
 {{!--
 <p>{{cost}}</p>
