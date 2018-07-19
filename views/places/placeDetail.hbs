@@ -1,28 +1,47 @@
-<h2>Detalle del lugar</h2>
 {{#if user}}
 
 <a href="/remove/{{place._id}}">borrar</a>
 
+<sub>Aportado por nuestro usuario:
+    <i>{{user.username}}</i>
+</sub>
+
 {{/if}}
 
-<img src={{place.photoURL}} alt="Foto del lugar Aqui" height="150px" width="300px" />
-<h1>{{place.placeName}}</h1>
-<p>{{place.cost}}</p>
-<p>{{place.recomendedAge}}</p>
-<p>{{place.location.address}}</p>
-<p>
-    <sub>Aportado por nuestro usuario:
-        <i>{{place.aportedBy.username}}</i>
-    </sub>
-</p>
-<p>
-    <i>
-        <sub>el dia :
-            <span id="formatedHour">{{place.created_at}}</span>
-        </sub>
-    </i>
-</p>
-<div id="mapita"></div>
+<div class="event-details">
+    <div class="event-header">
+        {{!--
+        <h3 id="fechaEvento">
+            <span id="formatedHour">{{place.date}}</span>
+        </h3> --}}
+        <h2>{{place.placeName}}</h2>
+    </div>
+    <div class="event-info">
+        <div class="left-info">
+            <img src={{place.photoURL}} alt="event_picture" height="300px" width="600px">
+            <h3>Detalles del Lugar</h3>
+            <p id="event-description">
+                {{place.description}}
+            </p>
+        </div>
+        <div class="div-location">
+            <div id="event-text">
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                    <h3>{{place.location.address}}</h3>
+                    <p>{{place.cost}}</p>
+                    <p>{{place.recomendedAge}}</p>
+                </div>
+
+            </div>
+        </div>
+        <div id="mapita"></div>
+    </div>
+</div>
+</div>
+
 
 {{!-- cambiar la hora --}}
 <script>
@@ -50,7 +69,7 @@
         }
     )
     var icono = {
-        url:"https://cdn2.iconfinder.com/data/icons/map-pins-1-01-easylines/128/yumminky-pin-78-512.png",
+        url: "https://cdn2.iconfinder.com/data/icons/map-pins-1-01-easylines/128/yumminky-pin-78-512.png",
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),

@@ -6,10 +6,10 @@
     <title>{{title}}</title>
   </head>
   <header>
-    <div class="nav-container">
+    <div class="nav-cont">
       <div id="title">
         {{!-- <br><a href="/"><img id="logo" src="/images/logo.png" alt="logo"></a> --}}
-        <a id="title-logo" href="/">tamborcitos</a>
+        <br><a id="title-logo" href="/">tamborcitos</a>
       </div>
       <div>
         <nav>
@@ -27,5 +27,13 @@
   {{{body}}}  
 
   <script src='/javascripts/script.js'></script>
+  {{#if user}}
+  <script>
+var boton = document.getElementById("profile").innerHTML
+console.log(boton)
+console.log(req.user)
+console.log({{user}})
+</script>
+  {{/if}}
   </body>
 </html>

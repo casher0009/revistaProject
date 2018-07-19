@@ -8,7 +8,6 @@
 </form>
 </div>
 <section>   
-<h3>lugares:</h3>
 {{#each places as | place |}}
     <a href="/places/{{place._id}}">
     <h2>{{place.placeName}} - <img width="40" src="{{place.photoURL}}" alt=""></h2>
@@ -18,9 +17,8 @@
 </section>
 
 <section>   
-<h3>eventos:</h3>
 {{#each events as | event |}}
-    <a href="/places/{{event._id}}">
+    <a href="/events/{{event._id}}">
     <h2>{{event.eventName}} - <img width="40" src="{{event.photoURL}}" alt=""></h2>
     </a>
 {{/each}}

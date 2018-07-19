@@ -3,8 +3,9 @@ const router = express.Router();
 const Place = require("../models/Place");
 const passport = require("passport");
 const multer = require("multer");
-const upload = multer({ dest: "./public/assets" });
+// const upload = multer({ dest: "./public/assets" });
 const User = require("../models/User");
+const uploadCloud = require("../helpers/cloudinary");
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -16,9 +17,9 @@ router.get("/newPlace", isLoggedIn, (req, res, next) => {
   res.render("places/newPlace");
 });
 
-router.post("/newPlace", upload.single("photo"), (req, res, next) => {
+router.post("/newPlace", uploadCloud.single("photo"), (req, res, next) => {
   if (req.file) {
-    req.body.photoURL = "/assets/" + req.file.filename;
+    req.user.photoURL = req.file.url;
     req.body.aportedBy = req.user._id;
     Place.create(req.body)
       .then(place =>
@@ -53,18 +54,26 @@ router.get("/places", (req, res) => {
 
 router.get("/places/:id", (req, res) => {
   const user = req.user;
-  Place.findById(req.params.id)
-    .populate("aportedBy")
+  console.log(user)
+  if (user === undefined){
+    Place.findById(req.params.id)
     .then(place => {
-      let ctx = { place };
-      if (user._id.toString() === place.aportedBy._id.toString())
-        ctx = { place, user };
-
-      res.render("places/placeDetail", ctx);
-    })
-    .catch(e => {
-      console.log(e);
+      res.render("places/placeDetail", {place});
     });
+  } else{
+    Place.findById(req.params.id)
+      .populate("aportedBy")
+      .then(place => {
+        let ctx = { place };
+        if (user._id.toString() === place.aportedBy._id.toString())
+          ctx = { place, user };
+
+        res.render("places/placeDetail", ctx);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
 });
 
 router.get("/remove/:id", (req, res) => {

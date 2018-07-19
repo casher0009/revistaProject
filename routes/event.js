@@ -3,8 +3,9 @@ const router = express.Router();
 const Event = require("../models/Event");
 const passport = require("passport");
 const multer = require("multer");
-const upload = multer({ dest: "./public/assets" });
+// const upload = multer({ dest: "./public/assets" });
 const User = require("../models/User");
+const uploadCloud = require("../helpers/cloudinary");
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -16,9 +17,9 @@ router.get("/newEvent", isLoggedIn, (req, res, next) => {
   res.render("events/newEvent");
 });
 
-router.post("/newEvent", upload.single("photo"), (req, res, next) => {
+router.post("/newEvent", uploadCloud.single("photo"), (req, res, next) => {
   if (req.file) {
-    req.body.photoURL = "/assets/" + req.file.filename;
+    req.user.photoURL = req.file.url;
     req.body.aportedBy = req.user._id;
     Event.create(req.body)
       .then(event =>
@@ -53,19 +54,42 @@ router.get("/events", (req, res) => {
 
 router.get("/events/:id", (req, res) => {
   const user = req.user;
-  Event.findById(req.params.id)
-    .populate("aportedBy")
+  console.log(user)
+  if (user === undefined){
+    Event.findById(req.params.id)
     .then(event => {
-      let ctx = { event };
-      if (user._id.toString() === event.aportedBy._id.toString())
-        ctx = { event, user };
-
-      res.render("events/eventDetail", ctx);
-    })
-    .catch(e => {
-      console.log(e);
+      res.render("events/eventDetail", {event});
     });
+  } else{
+    Event.findById(req.params.id)
+      .populate("aportedBy")
+      .then(event => {
+        let ctx = { event };
+        if (user._id.toString() === event.aportedBy._id.toString())
+          ctx = { event, user };
+
+        res.render("events/eventDetail", ctx);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
 });
+
+// router.get("/events/:id", (req, res) => {
+//   const user = req.user;
+//   Event.findById(req.params.id)
+//     .populate("aportedBy")
+//     .then(event => {
+//       let ctx = { event };
+//       if (user._id.toString() === event.aportedBy._id.toString()) ctx = { event, user };
+
+//       res.render("events/eventDetail", ctx);
+//     })
+//     .catch(e => {
+//       console.log(e);
+//     });
+// });
 
 router.get("/remove/:id", (req, res) => {
   Promise.all([
