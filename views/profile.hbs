@@ -1,16 +1,17 @@
-
-<h1>Profile</h1>
-
-
 <h1 class="title-pen"> MI PERFIL</h1>
 <div class="user-profile">
     <div id="user-data">
         <img id="photo" class="avatar" src={{photoURL}} alt="Ash" />
-        <div class="username">{{username}}</div>
+        <div class="username">nombre de usuario: {{username}}</div>
         <br><br><br>
     </div>
 
     <div class="user-places">
+        <div class="add-buttons">
+            <div class="userplaces"><a class="green-button" href="/newPlace">Agregar lugar</a></div>
+            <div class="userplaces"><a class="green-button" href="/newEvent">Crear evento</a></div>
+            <div class="userplaces"><a class="green-button" href="/logout">CERRAR SESIÓN</a></div>
+        </div>
         <div class="userplaces"> Mis lugares</div>
         <p>{{places.placeName}}</p>
     </div>
