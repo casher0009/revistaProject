@@ -1,7 +1,9 @@
 <h1 class="title-pen"> MI PERFIL</h1>
 <div class="user-profile">
     <div id="user-data">
-        <div><img id="photo" class="avatar" src={{photoURL}} alt="Ash" /></div>
+        <div>
+            <img id="photo" class="avatar" src={{photoURL}} alt="Ash" />
+        </div>
         <div id="users-info">
             <div class="">nombre de usuario: {{username}}</div>
             <br>
@@ -11,27 +13,43 @@
 
     <div class="user-places">
         <div class="add-buttons">
-            <div class="userplaces"><a class="green-button" href="/newPlace">Agregar lugar</a></div>
-            <div class="userplaces"><a class="green-button" href="/newEvent">Crear evento</a></div>
-            <div class="userplaces"><a class="green-button" href="/logout">CERRAR SESIÓN</a></div>
+            <div class="userplaces">
+                <a class="green-button" href="/newPlace">Agregar lugar</a>
+            </div>
+            <div class="userplaces">
+                <a class="green-button" href="/newEvent">Crear evento</a>
+            </div>
+            <div class="userplaces">
+                <a class="green-button" href="/logout">CERRAR SESIÓN</a>
+            </div>
         </div>
-        <div class="userplaces"> Mis lugares
-            <p><a href="#">{{places}}</p></a>
+        <div class="userplaces"> Mis lugares {{#each places}}
+            <p>
+                <a href="/places/{{this._id}}">{{this.placeName}}</a>
+            </p>
+            {{/each}}
         </div>
-        
+        <div class="userplaces"> Mis Eventos {{#each events}}
+            <p>
+                <a href="/events/{{this._id}}">{{this.placeName}}</a>
+            </p>
+            {{/each}}
+        </div>
+
+
     </div>
 </div>
 
 <form id="form" action="/profile" method="post" enctype="multipart/form-data">
-<input onchange="submitForm()" name="foto" id="file" style="display:none" type="file">
+    <input onchange="submitForm()" name="foto" id="file" style="display:none" type="file">
 </form>
 
 <script>
-    document.getElementById('photo').addEventListener('click', function(){
+    document.getElementById('photo').addEventListener('click', function () {
         document.getElementById('file').click();
     });
 
-    function submitForm(e){
-       document.getElementById('form').submit();
+    function submitForm(e) {
+        document.getElementById('form').submit();
     }
 </script>

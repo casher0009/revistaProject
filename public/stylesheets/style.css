@@ -444,4 +444,15 @@ nav a:hover::before {
   box-sizing: border-box;
   font-size: 14px; }
 
+#resultados {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
+  padding-top: 10%;
+  text-align: center; }
+
+.imgresul {
+  border-radius: 50%; }
+
 /*# sourceMappingURL=style.css.map */

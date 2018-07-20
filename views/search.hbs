@@ -4,23 +4,33 @@
       <input type="text" class="searchTerm" name="placeName" placeholder="Lugares o Eventos?">
       <button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
-     </button>
+             </button>
+             <sub style="color:gray">Los mas populares: McDonalds, Kidzania, Papalote... </sub>
 </form>
 </div>
-<section>   
+<br>
+<section id="resultados">
+<article class="resul">
+    <h2>Tu busqueda de lugares</h2>   
 {{#each places as | place |}}
     <a href="/places/{{place._id}}">
-    <h2>{{place.placeName}} - <img width="40" src="{{place.photoURL}}" alt=""></h2>
+    <img class="imgresul" width="150" height="120" src="{{place.photoURL}}" alt="">
+    <h2>{{place.placeName}}</h2>
     </a>
 {{/each}}
 
-</section>
+</article>
 
-<section>   
+<article class="resul">
+    <h2>Tu busqueda de eventos</h2>
 {{#each events as | event |}}
     <a href="/events/{{event._id}}">
-    <h2>{{event.eventName}} - <img width="40" src="{{event.photoURL}}" alt=""></h2>
+    <img class="imgresul"  width="150" height="120" src="{{event.photoURL}}" alt="">
+    <h2>{{event.eventName}} <br>
+    <h3>{{event.date}}</h3>
+    </h2>
     </a>
 {{/each}}
 
+</article>
 </section>

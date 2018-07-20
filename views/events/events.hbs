@@ -4,14 +4,15 @@
         {{#each event}}
             <div class="card">
                 <header class="card-header">
+                    <img class="imgresul"  width="100" src={{this.photoURL}} alt="">
                     <p class="card-header-title">{{this.eventName}}</p></a>
                     <p id="formatedHour" class="card-header-time">{{this.date}}</p>
                 </header>
                 <div class="card-content">
-                    <div class="card-description"><br><br>{{event.description}}</div>
+                    <div class="card-description"><br><br>{{this.description}}</div>
                 </div>
                 <footer class="card-footer">
-                    <p class="card-header-org">Organizado por {{event.organizedBy}}</p>
+                    <p class="card-header-org">Organizado por {{this.organizedBy}}</p>
                     <a href="/events/{{this._id}}" class="card-footer-item"><br>Ver evento</a>
                 </footer>
             </div>
@@ -20,10 +21,10 @@
 </section>
 
 {{!-- cambiar la hora --}}  
-<script>
+{{!-- <script>
     var oldHour = document.getElementById("formatedHour")
     var options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", hour12: "false" };
     var myDate = new Date(oldHour.innerHTML);
     var newDate = myDate.toLocaleString("es-ES", options)
     oldHour.innerHTML = newDate
-</script>
+</script> --}}

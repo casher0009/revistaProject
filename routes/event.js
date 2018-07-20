@@ -43,7 +43,7 @@ router.post("/newEvent", uploadCloud.single("photo"), (req, res, next) => {
 });
 
 router.get("/events", (req, res) => {
-  Event.find()
+  Event.find().sort({ date: -1 })
     .then(event => {
       res.render("events/events", { event });
     })

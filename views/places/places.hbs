@@ -1,10 +1,21 @@
-<h1>Lugares</h1>
-<section>
-<div>
-    {{#each place}}
-        <a href="/places/{{this._id}}">
-            <p>{{this.placeName}}</p>
-        </a>
-    {{/each}}
-</div>
+<section class="section-events">
+    <h2>Todos los lugares</h2>
+    <div class="showing-cards">
+        {{#each place}}
+            <div class="card">
+                <header class="card-header">
+                    <img class="imgresul"  width="100" src={{this.photoURL}} alt="">
+                    <p class="card-header-title">{{this.placeName}}</p></a>
+                </header>
+                <div class="card-content">
+                </div>
+                <footer class="card-footer">
+                    <p>{{this.cost}}</p>
+                    <p>{{this.recomendedAge}}</p>
+                    <a href="/events/{{this._id}}" class="card-footer-item"><br>Ver lugar</a>
+                </footer>
+            </div>
+        {{/each}}
+    </div>
 </section>
+

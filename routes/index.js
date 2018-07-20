@@ -42,12 +42,10 @@ router.post("/search", (req, res, next) => {
   console.log(req.body.placeName);
 
   const PlacePromise = Place.find({placeName: { $regex: req.body.placeName, $options: "i" }})
-  const EventPromise = Event.find({eventName: { $regex: req.body.placeName, $options: "i" }})
+  const EventPromise = Event.find({eventName: { $regex: req.body.placeName, $options: "i" }}).sort({ date: -1 })
   Promise.all([
     PlacePromise,EventPromise])
     .then(results => {
-      console.log(req.body.placeName, "EEEEEEEsta chingadera");
-      console.log(results);
       const ctx = {
         places: results[0],
         events: results[1]

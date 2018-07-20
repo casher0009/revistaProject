@@ -39,7 +39,8 @@ router.post(
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
     User.findById(req.user._id)
-    .populate("places", "events")
+    .populate("places")
+    .populate("events")
     .then(both => {
       res.render("profile", both);
     })
