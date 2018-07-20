@@ -30,8 +30,35 @@
             {{/each}}
         </div>
     </section>
+    <section class="section-events">
+        <h3>LUGARES PARA VISITAR</h3>
+                    <div id="ver-mas">
+            <a href="/places"><br>Ver más</a>
+        </div> 
+<br></p>
+        
+        {{!-- CARDS SECTION --}}
+        <div class="showing-cards">
+            {{#each places as |place|}}
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">{{place.placeName}}</p>
+                        <p class="card-header-time">{{place.date}}</p>
+                    </header>
+                    <div class="card-content">
+    <img class="imgresul" width="150" height="120" src="{{place.photoURL}}" alt="">
+                        {{!-- <div class="card-description"><br><br>{{place.description}}</div> --}}
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-header-org">Organizado por {{place.organizedBy}}</p>
+                        <a href="/places/{{place._id}}" class="card-footer-item"><br>Ver Lugar</a>
+                    </footer>
+                </div>
+            {{/each}}
+        </div>
+    </section>
 
-    <section class="section-places">
+    {{!-- <section class="section-places">
         <div id="lugares-de-interes">
             <h3>LUGARES DE INTERÉS</h3>
         </div>
@@ -55,7 +82,7 @@
             </div>
         {{/each}} 
     </div> 
-</div>
+</div> --}}
 
 <script>
     var today = Date.now();
