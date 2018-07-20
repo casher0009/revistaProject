@@ -1,20 +1,24 @@
-{{#if user}}
-
-<a href="/remove/{{event._id}}">borrar</a>
-
-<sub>Aportado por nuestro usuario:
-    <i>{{user.username}}</i>
-</sub>
-
-{{/if}}
-
 <div class="event-details">
     <div class="event-header">
         <h3 id="fechaEvento">
             <span id="formatedHour">{{event.date}}</span>
         </h3>
         <h2>{{event.eventName}}</h2>
+
     </div>
+    </div>
+                        {{#if user}}
+
+<sub>Aportado por ti:
+    <i>{{user.username}}</i>
+    lo quieres
+
+<a id="borrar" onclick="return confirm('Estás seguro que deseas eliminar el evento?');" href="/remove/{{event._id}}">borrar?</a>
+
+</sub>
+
+{{/if}}
+
     <div class="event-info">
         <div class="left-info">
             <img src={{event.photoURL}} alt="event_picture" height="300px" width="600px">

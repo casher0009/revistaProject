@@ -4,7 +4,11 @@
     </div>
     <section class="section-events">
         <h3>PRÓXIMOS EVENTOS</h3>
-        <p>{{today}}<br></p>
+        <p>{{today}}
+                    <div id="ver-mas">
+            <a href="/events"><br>Ver más</a>
+        </div> 
+<br></p>
         
         {{!-- CARDS SECTION --}}
         <div class="showing-cards">
@@ -15,7 +19,8 @@
                         <p class="card-header-time">{{event.date}}</p>
                     </header>
                     <div class="card-content">
-                        <div class="card-description"><br><br>{{event.description}}</div>
+    <img class="imgresul" width="150" height="120" src="{{event.photoURL}}" alt="">
+                        {{!-- <div class="card-description"><br><br>{{event.description}}</div> --}}
                     </div>
                     <footer class="card-footer">
                         <p class="card-header-org">Organizado por {{event.organizedBy}}</p>

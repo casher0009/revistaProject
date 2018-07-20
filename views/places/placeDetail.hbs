@@ -1,13 +1,3 @@
-{{#if user}}
-
-<a href="/removepl/{{place._id}}">borrar</a>
-
-<sub>Aportado por nuestro usuario:
-    <i>{{user.username}}</i>
-</sub>
-
-{{/if}}
-
 <div class="event-details">
     <div class="event-header">
         {{!--
@@ -15,7 +5,18 @@
             <span id="formatedHour">{{place.date}}</span>
         </h3> --}}
         <h2>{{place.placeName}}</h2>
+
     </div>
+                        {{#if user}}
+
+<sub>Aportado por ti:
+    <i>{{user.username}}</i>
+    lo quieres
+
+<a id="borrar" onclick="return confirm('Estás seguro que deseas eliminar el Lugar?');" href="/removepl/{{place._id}}">borrar?</a>
+</sub>
+{{/if}}
+
     <div class="event-info">
         <div class="left-info">
             <img src={{place.photoURL}} alt="event_picture" height="300px" width="600px">
