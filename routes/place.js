@@ -75,7 +75,7 @@ router.get("/places/:id", (req, res) => {
   }
 });
 
-router.get("/remove/:id", (req, res) => {
+router.get("/removepl/:id", (req, res) => {
   Promise.all([
     Place.findByIdAndRemove(req.params.id),
     User.findOneAndUpdate(
