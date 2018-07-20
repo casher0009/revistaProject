@@ -11,6 +11,7 @@ const placeSchema = new Schema(
         type: String,
         default: "Point"
       },
+      address: String,
       coordinates: [Number]
     },
     description: {

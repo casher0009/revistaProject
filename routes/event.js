@@ -19,7 +19,7 @@ router.get("/newEvent", isLoggedIn, (req, res, next) => {
 
 router.post("/newEvent", uploadCloud.single("photo"), (req, res, next) => {
   if (req.file) {
-    req.user.photoURL = req.file.url;
+    req.body.photoURL = req.file.url;
     req.body.aportedBy = req.user._id;
     Event.create(req.body)
       .then(event =>
@@ -54,13 +54,12 @@ router.get("/events", (req, res) => {
 
 router.get("/events/:id", (req, res) => {
   const user = req.user;
-  console.log(user)
-  if (user === undefined){
-    Event.findById(req.params.id)
-    .then(event => {
-      res.render("events/eventDetail", {event});
+  console.log(user);
+  if (user === undefined) {
+    Event.findById(req.params.id).then(event => {
+      res.render("events/eventDetail", { event });
     });
-  } else{
+  } else {
     Event.findById(req.params.id)
       .populate("aportedBy")
       .then(event => {

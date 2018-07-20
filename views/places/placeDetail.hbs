@@ -35,7 +35,6 @@
                     <p>{{place.recomendedAge}}</p>
                 </div>
 
-            </div>
         </div>
         <div id="mapita"></div>
     </div>
@@ -44,6 +43,9 @@
 
 
 {{!-- cambiar la hora --}}
+<script>
+    console.log({{place.location.address}})
+</script>
 <script>
     var oldHour = document.getElementById("formatedHour")
     var options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", hour12: "false" };

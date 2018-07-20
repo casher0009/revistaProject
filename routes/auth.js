@@ -82,7 +82,7 @@ router.post('/signup', (req,res,next)=>{
 });
 
 //quitar funcion isAuth
-router.get('/login' , (req,res,next)=>{
+router.get('/login', isAuth , (req,res,next)=>{
     res.render('auth/login', {next:req.query.next})
 });
 

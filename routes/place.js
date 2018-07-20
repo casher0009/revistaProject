@@ -19,7 +19,7 @@ router.get("/newPlace", isLoggedIn, (req, res, next) => {
 
 router.post("/newPlace", uploadCloud.single("photo"), (req, res, next) => {
   if (req.file) {
-    req.user.photoURL = req.file.url;
+    req.body.photoURL = req.file.url;
     req.body.aportedBy = req.user._id;
     Place.create(req.body)
       .then(place =>
@@ -54,13 +54,12 @@ router.get("/places", (req, res) => {
 
 router.get("/places/:id", (req, res) => {
   const user = req.user;
-  console.log(user)
-  if (user === undefined){
-    Place.findById(req.params.id)
-    .then(place => {
-      res.render("places/placeDetail", {place});
+  console.log(user);
+  if (user === undefined) {
+    Place.findById(req.params.id).then(place => {
+      res.render("places/placeDetail", { place });
     });
-  } else{
+  } else {
     Place.findById(req.params.id)
       .populate("aportedBy")
       .then(place => {
