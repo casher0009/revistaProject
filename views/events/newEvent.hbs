@@ -1,58 +1,48 @@
-<h1>
-  Agrega un Evento</h1>
-<form action="/newEvent" method="POST" enctype="multipart/form-data">
-  <p>
-    <input required placeholder="*Nombre del Evento:" type="text" name="eventName">
-  </p>
-    <div>
-      <label for="datefield">Fecha/Hora:</label>
+<h1 class="title-pen">AGREGA UN EVENTO</h1>
+<div class="user-profile">
+  <div id="newplace">
+    <form action="/newEvent" method="POST" enctype="multipart/form-data">
+        <input required placeholder="*Nombre del Evento:" type="text" name="eventName">
+        <div>
+          <label for="datefield">Fecha/Hora:</label>
+          <br>
+          <input type="datetime-local" id="datefield"
+                  name="date" value="2018-06-12T19:30"
+                  min="2018-06-07T00:00" />
+        </div>
+        {{!-- <p>
+        <input id="datefield" required placeholder="*Fecha del Evento:" value="2000-01-01" type="date" min="2000-01-01" name="date">
+      </p> --}}
+      <input required placeholder="*Organizado por:" type="text" name="organizedBy">
+      <input placeholder="Breve Descripcion:" type="text" name="description">
+      <input required type="text" name="location[address]" id="address">
+      
+      <select name="recomendedAge" required>
+        <option value="">*Edad recomendada:</option>
+        <option>todas las edades</option>
+        <option>menos de 3 años</option>
+        <option>entre 3 y 11 años</option>
+        <option>mas de 11 años</option>
+      </select>
+      
+      <select name="cost" required>
+        <option value=""> *Costo aprox:</option>
+        <option>gratis</option>
+        <option>menor a $100</option>
+        <option>mayor a $100</option>
+      </select>
+
+      <input type="hidden" name="location[coordinates][1]" id="lat">
+      <input type="hidden" name="location[coordinates][0]" id="lng">
+
+      Sube una foto:
       <br>
-      <input type="datetime-local" id="datefield"
-              name="date" value="2018-06-12T19:30"
-              min="2018-06-07T00:00" />
-    </div>
-
-    {{!-- <p>
-    <input id="datefield" required placeholder="*Fecha del Evento:" value="2000-01-01" type="date" min="2000-01-01" name="date">
-  </p> --}}
-  <p>
-    <input required placeholder="*Organizado por:" type="text" name="organizedBy">
-  </p>
- <p> <input placeholder="Breve Descripcion:" type="text" name="description"></p>
- <p> <input required type="text" name="location[address]" id="address"></p>
-  <p><select name="recomendedAge" required>
-    <option value="">*Edad recomendada:</option>
-    <option>todas las edades</option>
-    <option>menos de 3 años</option>
-    <option>entre 3 y 11 años</option>
-    <option>mas de 11 años</option>
-  </select>
-</p>
-<p>  <select name="cost" required>
-    <option value=""> *Costo aprox:</option>
-    <option>gratis</option>
-    <option>menor a $100</option>
-    <option>mayor a $100</option>
-  </select>
-  </p>
-  <p>
-    <input type="hidden" name="location[coordinates][1]" id="lat">
-  </p>
-  <p>
-    <input type="hidden" name="location[coordinates][0]" id="lng">
-  </p>
-  <p>
-    Sube una foto:
-    <br>
-    <input type="file" name="photo" value="Sube una foto">
-
-  </p>
-  <p>
-  <input type="submit" value="Guardar evento ">
-  <br>
-  * Informacion requerida
-</p>
-</form>
+      <input type="file" name="photo" value="Sube una foto">
+      <button id="button" type="submit" value="Guardar evento">GUARDAR EVENTO</button>
+      * Informacion requerida
+    </form>
+  </div>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzYCmApB3ysZNFYoP4TbhfHdNIhOroJtc&libraries=places"></script>
 

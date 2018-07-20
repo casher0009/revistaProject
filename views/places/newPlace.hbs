@@ -1,44 +1,40 @@
-<h1>
-  Agrega un Lugar</h1>
-<form action="/newPlace" method="POST" enctype="multipart/form-data">
-  <p>
-    <input required placeholder="*Nombre del Lugar:" type="text" name="placeName">
-  </p>
- <p> <input placeholder="Breve Descripcion del Lugar:" type="text" name="description"></p>
- <p> <input required type="text" name="location[address]" id="address"></p>
-  <p><select name="recomendedAge" required>
-    <option value="">*Edad recomendada:</option>
-    <option>todas las edades</option>
-    <option>menos de 3 años</option>
-    <option>entre 3 y 11 años</option>
-    <option>mas de 11 años</option>
-  </select>
-</p>
-<p>  <select name="cost" required>
-    <option value=""> *Costo aprox:</option>
-    <option>gratis</option>
-    <option>menor a $100</option>
-    <option>mayor a $100</option>
-  </select>
-  </p>
-  <p>
-    <input type="hidden" name="location[coordinates][1]" id="lat">
-  </p>
-  <p>
-    <input type="hidden" name="location[coordinates][0]" id="lng">
-  </p>
-  <p>
-    Sube una foto del lugar:
-    <br>
-    <input type="file" name="photo" value="Sube una foto">
+<h1 class="title-pen">AGREGA UN LUGAR</h1>
+<div class="user-profile">
+  <div id="newplace">
+    <form action="/newPlace" method="POST" enctype="multipart/form-data">
+      
+      <input required placeholder="*Nombre del Lugar:" type="text" name="placeName">
+      <input placeholder="Breve Descripcion del Lugar:" type="text" name="description">
+      <input required type="text" name="location[address]" id="address">
+      
+      <select name="recomendedAge" required>
+        <option value="">*Edad recomendada:</option>
+        <option>todas las edades</option>
+        <option>menos de 3 años</option>
+        <option>entre 3 y 11 años</option>
+        <option>mas de 11 años</option>
+      </select>
+      
+      <select name="cost" required>
+        <option value=""> *Costo aprox:</option>
+        <option>gratis</option>
+        <option>menor a $100</option>
+        <option>mayor a $100</option>
+      </select>
 
-  </p>
-  <p>
-  <input type="submit" value="Guardar lugar ">
-  <br>
-  * Informacion requerida
-</p>
-</form>
+      <input type="hidden" name="location[coordinates][1]" id="lat">
+      <input type="hidden" name="location[coordinates][0]" id="lng">
+
+      Sube una foto del lugar:
+      <br>
+      <input type="file" name="photo" value="Sube una foto">
+      <button id="button" type="submit" value="Guardar lugar ">GUARDAR LUGAR</button>
+      <br>
+      * Informacion requerida
+      </p>
+    </form>
+  </div>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzYCmApB3ysZNFYoP4TbhfHdNIhOroJtc&libraries=places"></script>
 
