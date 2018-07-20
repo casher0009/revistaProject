@@ -39,7 +39,6 @@ router.get("/search", (req, res, next) => {
 });
 
 router.post("/search", (req, res, next) => {
-  console.log(req.body.placeName);
 
   const PlacePromise = Place.find({placeName: { $regex: req.body.placeName, $options: "i" }})
   const EventPromise = Event.find({eventName: { $regex: req.body.placeName, $options: "i" }}).sort({ date: -1 })
